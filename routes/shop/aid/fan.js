@@ -41,7 +41,7 @@ if (req.body && email) {
 pid = req.body.id;
 
 age
-.get('https://api.paidy.com/payments/'+pid)
+.get('https://api.paidy.com/tokens/'+pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
@@ -134,7 +134,7 @@ var chk = function(req, res, next) {
 };
 
 var fun=
-[getEma, getUsr,
+[getEma, getUsr,putPid,senEma,
 chk]
 router.put('/shop/aid/fan',fun);
 

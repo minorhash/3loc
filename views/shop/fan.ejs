@@ -57,7 +57,11 @@ xhr.open("PUT", loc+"/shop/aid/fan", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send(JSON.stringify(cb));
 
-}
+},
+    "token":{
+"wallet_id":"default",
+        "type":"recurring",
+    }
 };
 var paidyHandler=Paidy.configure(config);
 function paidyPay(){

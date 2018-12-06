@@ -73,7 +73,7 @@ app.use('/', anot[i]);
 
 // === paidy ===
 
-var aaid=["paidy","pid"]
+var aaid=["paidy","pid","fan"]
 for(var i=0;i<aaid.length;i++){
 aaid[i]=require('./routes/shop/aid/'+aaid[i]);
 app.use('/', aaid[i]);

@@ -5,7 +5,7 @@ var cnf=require("../son/cnf.json")
 var sec=cnf.skl
 var email="minorhash@gmail.com"
 var allpid=adb.allPid(email)
-console.log(allpid)
+//console.log(allpid)
 
 // if(allpid.length!==0){
 // for(var i=0;i<allpid.length;i++){

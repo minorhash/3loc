@@ -10,71 +10,29 @@
 
 <!--- main ----- -->
 
-<div class="col-sm-6 col-sm-12" style="color:black">
+<div class="well col-sm-6 col-sm-12" style="color:black">
 <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
+<%= pub %><br>
+<%= usr %><br>
+<%= mailadr.phn %><br>
+<%= mailadr.ln1 %><br>
 
-<div class="col-md-12" style="color:black"  >
-<%for(var i=0;i<seltmp.length;i++){%>
-<%if(seltmp[i].uni!==0){%>
+    <script>
+        console.log("5")
+    </script>
+    
+    <script>
+var loc= "http://localhost:3000";
+var xhr = new XMLHttpRequest();
+xhr.open("PUT", loc+"/shop/aid/fan", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify());
+    </script>
 
-
-<div class="col-md-4">
-<div align="center">
-<img src="../img/cd/<%=mer[i].sku%>.png" width="150" height="150" >
-</div></div>
-
-<div class="col-md-8">
-<div class="pa2">
-商品名：&nbsp;  <%=mer[i].name%><br>
-商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
-単価（税込）: &nbsp;<%= Math.round((mer[i].pri)*1.08).toLocaleString()%>円 <br>
-注文数:&nbsp; <%=seltmp[i].uni%><br>
-
-<hr>
-</div>
-</div>
-
-<div class="row"></div>
-
-<br>
-
-<%}%>
-<%}%>
-
-<div class="col-md-12 col-md-12 hidden-xs">
-
-<div class="col-md-3 hidden-xs"></div>
-
-<div class="col-md-3 hidden-xs"></div>
-<div class="col-md-3 hidden-xs">
-<div class="pabox">商品合計(税込）：</div>
-
-</div>
-
-<div class="col-md-3 hidden-xs">
-
-<div class="pabox">
-<%if(sum){%>
-<%= Math.round(sum*1.08).toLocaleString()%> 円
-
-<%}%></div>
-
-
-合計(税込）：
-<%if(tsum){%>
-<%=tsum.toLocaleString()%> 円
-<%}%>
-
-</div>
-</div>
-
-</div>
 </div>
 
 <div class=" well col-md-3 col-sm-12" style="color:black">
-
-<div class="row"></div>
 
 <p class="pa1">
 Paidy決済をご希望の方は下記ボタンを押してください。<br>
@@ -83,10 +41,9 @@ Paidyのページが表示されますので、
 Paidyのアカウントにてログインし、お手続きください。</p>
 
 <br><br>
-<div align="right">
 <button id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
 <script type="text/javascript" src="https://apps.paidy.com/"></script>
-   <script type="text/javascript">
+<script type="text/javascript">
 
 var config={
 "api_key":"<%= pub %>",
@@ -96,15 +53,16 @@ var config={
 var loc= "http://localhost:3000";
 
 var xhr = new XMLHttpRequest();
-xhr.open("PUT", loc+"/shop/aid/pid", true);
+xhr.open("PUT", loc+"/shop/aid/fan", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send(JSON.stringify(cb));
+
 }
 };
 var paidyHandler=Paidy.configure(config);
 function paidyPay(){
 var payload={
-"amount":<%= tsum %>,
+"amount":100,
 "currency":"JPY",
 "store_name":"axell store",
 "buyer":{
@@ -113,7 +71,7 @@ var payload={
 "phone":"<%= mailadr.phn %>"
 },
 "buyer_data":{
-"user_id":"yamada_taro",
+"user_id":"<%= usr %>",
 "age":29,
 "order_count":1000,
 "ltv":250000,
@@ -122,19 +80,15 @@ var payload={
 },
 "order":{
 
-"items":[
-<% for(var i=0;i<ite.length;i++){ %>
-{
-"id":"<%= ite[i].id %>",
-"quantity":"<%= ite[i].quantity %>",
-"title":"<%= ite[i].title %>",
-"unit_price":"<%= ite[i].unit_price %>"
-       },
-    <% } %>
-],
+"items":[{
+"id":"fan001",
+"quantity":1,
+"title":"fanclub",
+"unit_price":100
+}],
 "order_ref":"88e021674",
-"shipping":<%= ship %>,
-"tax":<%= tax %>
+"shipping":0,
+"tax":0
 },
 "shipping_address":{
 "line1":"<%= mailadr.ln1 %>",
@@ -152,14 +106,10 @@ paidyHandler.launch(payload);
 </script>
 
 </div>
-
 </div>
 
-<div class="row"></div>
-<br><br>
 
-
-<div class="col-sm-5 hidden-xs"></div>
+<div class="well col-md-12">
 
 <div class="btn-toolbar" style="color:black">
 <div class="btn-group">
@@ -174,15 +124,11 @@ paidyHandler.launch(payload);
 <br>
 
 </div>
-
-</div>
-</div>
 </div>
 
+</div>
 
-
-
-<br><br><br><br><br><br>
+</div>
 
 
 </div>

@@ -56,7 +56,7 @@ app.use('/', page);
 var shop = require('./routes/shop/index');
 app.use('/', shop);
 
-var top=["index","cart","item","his","my","dl"]
+var top=["index","cart","item","his","my","dl","fan"]
 
 top.forEach(function(ite){
 ite=require('./routes/shop/'+ite)

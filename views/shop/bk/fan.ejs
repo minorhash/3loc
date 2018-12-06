@@ -14,59 +14,6 @@
 <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
 
-<div class="col-md-12" style="color:black"  >
-<%for(var i=0;i<seltmp.length;i++){%>
-<%if(seltmp[i].uni!==0){%>
-
-
-<div class="col-md-4">
-<div align="center">
-<img src="../img/cd/<%=mer[i].sku%>.png" width="150" height="150" >
-</div></div>
-
-<div class="col-md-8">
-<div class="pa2">
-商品名：&nbsp;  <%=mer[i].name%><br>
-商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
-単価（税込）: &nbsp;<%= Math.round((mer[i].pri)*1.08).toLocaleString()%>円 <br>
-注文数:&nbsp; <%=seltmp[i].uni%><br>
-
-<hr>
-</div>
-</div>
-
-<div class="row"></div>
-
-<br>
-
-<%}%>
-<%}%>
-
-<div class="col-md-12 col-md-12 hidden-xs">
-
-<div class="col-md-3 hidden-xs"></div>
-
-<div class="col-md-3 hidden-xs"></div>
-<div class="col-md-3 hidden-xs">
-<div class="pabox">商品合計(税込）：</div>
-
-</div>
-
-<div class="col-md-3 hidden-xs">
-
-<div class="pabox">
-<%if(sum){%>
-<%= Math.round(sum*1.08).toLocaleString()%> 円
-
-<%}%></div>
-
-
-合計(税込）：
-<%if(tsum){%>
-<%=tsum.toLocaleString()%> 円
-<%}%>
-
-</div>
 </div>
 
 </div>
@@ -99,6 +46,8 @@ var xhr = new XMLHttpRequest();
 xhr.open("PUT", loc+"/shop/aid/pid", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send(JSON.stringify(cb));
+
+
 }
 };
 var paidyHandler=Paidy.configure(config);

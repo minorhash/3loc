@@ -1,5 +1,6 @@
 var express = require("express")
 var router = express.Router()
+var url=require("url")
 // == db =============================
 var adb = require("usrdb")
 
@@ -111,11 +112,7 @@ console.log("cap!!!")
 }else{
 
 console.log(res.body.id)
-console.log("cancel")
 
-
-    var max=adb.getPid(res.body.id)
-    console.log(max)
 //adb.delPid(res.body.id)
 }
 
@@ -127,11 +124,16 @@ console.log("cancel")
 next()}
 
 var chk = function(req, res, next) {
-
+var host = url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl,
+});
 console.log("=== chk =====================")
 console.log(opal)
 console.log("=== oite =====")
 console.log(oite)
+console.log(host)
 next()}
 
 var gcb = function(req, res) {

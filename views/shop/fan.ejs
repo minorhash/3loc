@@ -11,7 +11,8 @@
 <!--- main ----- -->
 
 <div class="well col-sm-6 col-sm-12" style="color:black">
-<p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
+<% if(usr){ %>
+<p class="box90">&nbsp;ファンクラブ内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
 <%= pub %><br>
 <%= usr %><br>
@@ -30,10 +31,14 @@ xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send(JSON.stringify());
     </script>
 
+<% } else {%>
+<%= shop.login %>
+<% } %>
 </div>
 
 <div class=" well col-md-3 col-sm-12" style="color:black">
 
+<% if(usr){ %>
 <p class="pa1">
 Paidy決済をご希望の方は下記ボタンを押してください。<br>
 Paidyのページが表示されますので、
@@ -108,7 +113,9 @@ paidyHandler.launch(payload);
 
 
 </script>
+<% } else {%>
 
+<% } %>
 </div>
 </div>
 

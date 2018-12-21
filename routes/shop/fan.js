@@ -146,11 +146,17 @@ unit_price: mer[i].pri,
 next()};
 
 var chk = function(req, res, next) {
-console.log('=== PAIDY ====================================');
+console.log('=== fan ====================================');
 //console.log(son)
 console.log(pub)
 console.log(email)
 console.log(mailadr)
+    var http=require("http")
+    var url=require("url")
+    var adr="http://localhost:3000/shop/fan"
+var q = url.parse(adr, true);
+console.log(q);
+console.log(q.href);
 
 next()};
 

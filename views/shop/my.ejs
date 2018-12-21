@@ -1,17 +1,14 @@
+<html>
 <% include par/head %>
 <% include par/nav %>
 <body>
+
 <div class="container-fluid">
 <div class="row">
 
-<!--- side left ----- -->
-
-
-<% include par/lang %>
-
 <div class="col-md-2" style="color:black">
 <% include par/left %>
-</div>
+</div><!-- col2-->
 
 <div class="col-md-10">
 <div class="box90">マイページ</div>
@@ -19,18 +16,18 @@
 <% include par/my/main %> 
 
 <%}else{%>
-<span style="color:black">
-    <br>
+<span style="color:black"><br>
 ログインしてください。
 </span>
 <%}%>
-<br>
-</div>
-<!-- row -->
-</div>
-<!-- cont -->
+
+</div><!-- col10-->
+
+</div><!-- row -->
+</div><!-- cont -->
 
 
 <% include par/foot %>
 
-
+</body>
+</html>

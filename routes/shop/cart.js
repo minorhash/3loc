@@ -182,7 +182,7 @@ var putAid = function(req, res, next) {
 
 var pcb = function(req, res, next) {
   res.render("shop/cart", {
-      seltmp: mailtmp,    sum: sum,    mer: mer,    usr: usr,cnf:cnf,
+      seltmp: mailtmp,    sum: sum,tsum:tsum,    mer: mer,    usr: usr,cnf:cnf,
     email: email
   }); //rend
 };

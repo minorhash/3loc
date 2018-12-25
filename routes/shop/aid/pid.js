@@ -124,7 +124,6 @@ if(pid){
 snde.trEma(email,sub,fin);
 }else{console.log("no pid")}
 
-
 })
 
 

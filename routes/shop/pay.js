@@ -56,7 +56,6 @@ oite.push(JSON.parse(allpid[i].ite))
 
 }//for
 
-
 }//else
 next()}
 
@@ -102,11 +101,13 @@ console.log("===== pid:",selqr)
 
 var snde = require('snd-ema');
     var img="<img src=\""+selqr.qr+"\">"
-    try{
-    snde.trEma(email,"sub",img)
-    }catch(err){console.log(err)}
+
+// try{
+// snde.trEma(email,"sub",img)
+// }catch(err){console.log(err)}
 
 }catch(err){console.log(err)}
+
 }else { console.log("no allpid")}
 
 next()}
@@ -139,11 +140,11 @@ title: "qr code", usr: usr, selpid: selpid,
 allpid: allpid, allnow: allnow,
 oite: oite,opal:opal,
 allpal:allpal,selqr:selqr,
-    literr:literr
+literr:literr
 })
 }
 
-router.get("/shop/pay:id", [getEma, getUsr, allPid, allPal,insQR,selQR,
+router.get("/shop/pay", [getEma, getUsr, allPid, allPal,
 chk, gcb])
 
 module.exports = router

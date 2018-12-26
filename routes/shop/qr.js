@@ -7,11 +7,11 @@ var adb = require("usrdb")
 var age=require("superagent")
 var cnf=require("./son/aid.json")
 // === glob ============================
-var email, usr
-var selpid, allpid,allnow,allpal,selqr
+var email, usr,pid
+var selpid, allpid,allnow,allpal,selqr,getpid
 var ite, oite,opal,ship
 var jpal=[],opal=[]
-var literr
+var literr,name,ite
 
 var cred = require("./js/cred")
 // === get ============================
@@ -39,8 +39,7 @@ opal.push(JSON.parse(allpal[i].ite))
 
 next()}
 
-
-//  aid
+//  allpid
 var allPid = function(req, res, next) {
 
 if(!email){
@@ -55,36 +54,45 @@ for (var i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
 
 }//for
-
-
 }//else
+next()}
+
+//  getpid
+var setPid= function(req, res, next) {
+pid=req.body.pid
+    console.log("=== get pid")
+    console.log(pid)
+//pid="pay_XAjslFYAAGEAiXdP"
+if(pid){
+getpid=adb.getPid(pid)
+}else{console.log("no pid")}
+
 next()}
 
 //  ins qr
 var insQR= function(req, res, next) {
 var QRCode = require('qrcode')
-var json=JSON.stringify(allpid[0])
+//var json=JSON.stringify(getpid)
 
-    var name=JSON.parse(allpid[0].buy)
-    var ite=JSON.parse(allpid[0].ite)
+    name=JSON.parse(getpid.buy)
+    ite=JSON.parse(getpid.ite)
 
-var str="金額:"+(allpid[0].mnt).toLocaleString()+"円 \n名前:"+name.name1
+var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
 var arr
 
 for(var i=0;i<ite.length;i++){
 arr+=
 "\n商品名:"+ite[i].title+", 個数:"+ite[i].quantity
 }
-var fin=str+arr
+var fin=arr
 
  QRCode.toDataURL(fin, function (err, url) {
  try{
- adb.insQR(allpid[0].pid,url)
+ adb.insQR(getpid.pid,url)
  }catch(err){
      console.log(err.name)
      literr=err.message.substring(0,6)
-     console.log(allpid[0])
-
+     console.log(getpid)
 }
 })
 
@@ -93,84 +101,24 @@ next()}
 //  sel qr
 var selQR= function(req, res, next) {
 
-console.log(allpid[0].pid)
+console.log(pid)
 
-if(allpid[0].pid){
+if(pid){
 try{
-selqr=adb.selQR(allpid[0].pid)
-console.log("===== pid:",selqr)
+selqr=adb.selQR(pid)
+console.log("===== pid:",selqr.pid)
 
 var snde = require('snd-ema');
     var img="<img src=\""+selqr.qr+"\">"
+    var link="<a href=\"http://localhost:3000/shop/qr-"+pid+"\">"+"link"+"</a>"
     try{
-    snde.trEma(email,"sub",img)
+    snde.trEma(email,"sub",link)
     }catch(err){console.log(err)}
 
 }catch(err){console.log(err)}
 }else { console.log("no allpid")}
 
 next()}
-
-// cat auth
-var capAut= function(req, res, next) {
-
-for (var i = 0; i < allpid.length; i++) {
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(function(res){
-if(res.body.status=="authorized"){
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(function(res){
-
- console.log("captured!!!")
-})
-
-}else{
- console.log("no auth")
-}
-
-})
-}
-
-next()}
-
-var chkCap= function(req, res, next) {
-
-for (var i = 0; i < allpid.length; i++) {
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+cnf.skl)
-.then(function(res){
-
-//console.log(res.body)
-if(res.body.status=="closed"){
-
-if(res.body.captures.length!==0){
-console.log("cap!!!")
-}else{
-
-console.log(res.body.id)
-
-//adb.delPid(res.body.id)
-}
-
-}else{console.log("not closed")}
-
-})
-}//for
-
-next()}
-
-
 
 var chk = function(req, res, next) {
 var host = url.format({
@@ -179,14 +127,13 @@ var host = url.format({
     pathname: req.originalUrl,
 });
 
-
-
 console.log("=== chk =====================")
+console.log(pid)
 console.log(email)
-console.log(allpid[0])
-if(selqr){
-console.log(selqr)
-}else{console.log("no sel qr")}
+console.log(name.name1)
+// if(selqr){
+// console.log(selqr)
+// }else{console.log("no sel qr")}
 
 console.log("=== oite =====")
 //console.log(oite)
@@ -195,15 +142,18 @@ next()}
 
 var gcb = function(req, res) {
 res.render("shop/qr", {
-title: "qr code", usr: usr, selpid: selpid,
+title: "qr code", usr: usr, selpid: selpid,pid:pid,
 allpid: allpid, allnow: allnow,
 oite: oite,opal:opal,
 allpal:allpal,selqr:selqr,
-    literr:literr
+literr:literr
 })
 }
 
-router.get("/shop/qr", [getEma, getUsr, allPid, allPal,insQR,selQR,
+router.post("/shop/qr-:id", [getEma, getUsr, setPid,allPid, allPal,insQR,selQR,
+chk, gcb])
+
+router.get("/shop/qr-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
 chk, gcb])
 
 module.exports = router

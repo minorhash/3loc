@@ -13,32 +13,18 @@
 
 <div class="col-md-10" style="color:black">
 
-    <div class="box90"><%= title %></div><!-- box90-->
-    <br>
-
-    <% if(usr) { %>
-<div class="well col-md-12" style="color:black">
-
-<% if(literr){ %> err:<p class="label label-default"> <%= literr %></p>
-<%} %>
-
-    <div class="well">
-        <% if(selqr){ %>
-    pid:<%= selqr.pid %><br>
-    <img src="<%= selqr.qr %>">
-    <% } else { %>
-no qr
-    <% } %>
-    </div>
-
-</div><!-- col12-->
+<div class="box90">購入履歴詳細</div><!-- box90-->
+<% if(usr){ %>
+<% include par/pay/main %>
+<% } else { %>
+please log in.
 <% } %>
-
 </div><!-- col10-->
 
 
 </div><!--row-->
 </div><!-- /container -->
+
 
 
 </body>

@@ -14,7 +14,7 @@
 <%=allpid[i].date%></u></b><br>
 </font>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
-<form method="post" action="/shop/qr-<%= allpid[i].pid %> ">
+<form method="post" action="/shop/qr/cr-<%= allpid[i].pid %> ">
 <input type="hidden" value="<%=allpid[i].pid%>" name="pid">
 
 <button><%= allpid[i].pid %></button>
@@ -25,6 +25,7 @@
 
 
 <%}%>
+
 </div><!-- col2-->
 <%} else {%> paidyでの購入はありません <%}%>
 </div><!-- cont-->

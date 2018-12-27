@@ -2,27 +2,24 @@
 <body>
 <% include par/nav %>
 <div class="container-fluid">
+    <% if(usr){ %>
 <div class="row">
 
 <div class="col-md-2" style="color:black">
 <% include par/left %>
-</div>
+</div><!-- col2-->
 
-<!--- main ----- -->
+<div class="col-sm-6 col-sm-12" style="color:black;background-color:white">
 
-<div class="col-sm-6 col-sm-12" style="color:black">
 <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
 <br>
 
-<div class="col-md-12" style="color:black"  >
 <%for(var i=0;i<seltmp.length;i++){%>
 <%if(seltmp[i].uni!==0){%>
 
-
-<div class="col-md-4">
-<div align="center">
+<span align="center" class="col-md-4">
 <img src="../img/cd/<%=mer[i].sku%>.png" width="150" height="150" >
-</div></div>
+</span><!-- col4-->
 
 <div class="col-md-8">
 <div class="pa2">
@@ -31,50 +28,28 @@
 単価（税込）: &nbsp;<%= Math.round((mer[i].pri)*1.08).toLocaleString()%>円 <br>
 注文数:&nbsp; <%=seltmp[i].uni%><br>
 
-<hr>
-</div>
-</div>
-
-<div class="row"></div>
-
-<br>
+</div><!-- pa2-->
+</div><!-- col8-->
 
 <%}%>
 <%}%>
 
-<div class="col-md-12 col-md-12 hidden-xs">
 
-<div class="col-md-3 hidden-xs"></div>
-
-<div class="col-md-3 hidden-xs"></div>
 <div class="col-md-3 hidden-xs">
 <div class="pabox">商品合計(税込）：</div>
 
-</div>
-
-<div class="col-md-3 hidden-xs">
-
 <div class="pabox">
-<%if(sum){%>
-<%= Math.round(sum*1.08).toLocaleString()%> 円
-
-<%}%></div>
-
-
+<%if(sum){%><%= Math.round(sum*1.08).toLocaleString()%> 円<%}%>
+</div><!-- pabox-->
 合計(税込）：
 <%if(tsum){%>
 <%=tsum.toLocaleString()%> 円
 <%}%>
+</div><!-- col3-->
+</div><!-- row-->
 
-</div>
-</div>
-
-</div>
-</div>
-
+<div class="row">
 <div class=" well col-md-3 col-sm-12" style="color:black">
-
-<div class="row"></div>
 
 <p class="pa1">
 Paidy決済をご希望の方は下記ボタンを押してください。<br>
@@ -86,8 +61,7 @@ Paidyのアカウントにてログインし、お手続きください。</p>
 <div align="right">
 <button id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
 <script type="text/javascript" src="https://apps.paidy.com/"></script>
-   <script type="text/javascript">
-
+    <script> 
 var config={
 "api_key":"<%= pub %>",
 "logo_url":"http://www.paidy.com/images/logo.png",
@@ -150,44 +124,36 @@ paidyHandler.launch(payload);
 
 
 </script>
+</div><!-- right-->
 
-</div>
+</div><!-- -->
+</div><!-- row-->
 
-</div>
+<div class="row">
 
-<div class="row"></div>
-<br><br>
+<div class="col-md-4 hidden-xs" style="color:black"></div>
 
+<div class="col-md-4 hidden-xs">
 
-<div class="col-sm-5 hidden-xs"></div>
-
-<div class="btn-toolbar" style="color:black">
-<div class="btn-group">
-
-<form method="get" action="/shop/cart">
+<table border="0" class="table"><tr><td>
+<form class="form" method="get" action="/shop/cart">
 <button type="submit">カートに戻る</button>
-</form></div>
-
-<form method="get" action="/shop">
+</form>
+</td><td>
+<form class="form" method="get" action="/shop">
 <button type="submit">ショップに戻る</button>
 </form>
-<br>
+</td></tr>
+</table>
 
+</div><!-- col5-->
+
+<div class="col-md-4 hidden-xs" style="color:black"></div>
+
+</div><!-- row-->
+<% } else { %>
+please log in.
+<% }  %>
 </div>
 
-</div>
-</div>
-</div>
-
-
-
-
-<br><br><br><br><br><br>
-
-
-</div>
-</div>
-
-<div class="footer"><% include par/foot %></div>
-
-
+    <% include par/foot %>

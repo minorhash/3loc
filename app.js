@@ -56,12 +56,20 @@ app.use('/', page);
 var shop = require('./routes/shop/index');
 app.use('/', shop);
 
-var top=["index","cart","item","his","my","dl","fan","qr","pay"]
+var top=["index","cart","item","his","my","dl","fan",]
 
 top.forEach(function(ite){
 ite=require('./routes/shop/'+ite)
 app.use('/', ite)
 })
+
+// === qr ===
+var aqr=["sel","cr","dl"]
+
+for(var i=0;i<aqr.length;i++){
+aqr[i]=require('./routes/shop/qr/'+aqr[i]);
+app.use('/', aqr[i]);
+}
 
 // === not ===
 var anot=["agmt","gui","not"]

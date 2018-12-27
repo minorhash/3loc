@@ -59,68 +59,12 @@ oite.push(JSON.parse(allpid[i].ite))
 }//else
 next()}
 
-//  ins qr
-var insQR= function(req, res, next) {
-var QRCode = require('qrcode')
-var json=JSON.stringify(allpid[0])
-
-    var name=JSON.parse(allpid[0].buy)
-    var ite=JSON.parse(allpid[0].ite)
-
-var str="金額:"+(allpid[0].mnt).toLocaleString()+"円 \n名前:"+name.name1
-var arr
-
-for(var i=0;i<ite.length;i++){
-arr+=
-"\n商品名:"+ite[i].title+", 個数:"+ite[i].quantity
-}
-var fin=str+arr
-
- QRCode.toDataURL(fin, function (err, url) {
- try{
- adb.insQR(allpid[0].pid,url)
- }catch(err){
-     console.log(err.name)
-     literr=err.message.substring(0,6)
-     console.log(allpid[0])
-
-}
-})
-
-next()}
-
-//  sel qr
-var selQR= function(req, res, next) {
-
-console.log(allpid[0].pid)
-
-if(allpid[0].pid){
-try{
-selqr=adb.selQR(allpid[0].pid)
-console.log("===== pid:",selqr)
-
-var snde = require('snd-ema');
-    var img="<img src=\""+selqr.qr+"\">"
-
-// try{
-// snde.trEma(email,"sub",img)
-// }catch(err){console.log(err)}
-
-}catch(err){console.log(err)}
-
-}else { console.log("no allpid")}
-
-next()}
-
-
 var chk = function(req, res, next) {
 var host = url.format({
     protocol: req.protocol,
     host: req.get('host'),
     pathname: req.originalUrl,
 });
-
-
 
 console.log("=== chk =====================")
 console.log(email)
@@ -131,11 +75,10 @@ console.log(selqr)
 
 console.log("=== oite =====")
 //console.log(oite)
-console.log(host)
 next()}
 
 var gcb = function(req, res) {
-res.render("shop/pay", {
+res.render("shop/qr/sel", {
 title: "qr code", usr: usr, selpid: selpid,
 allpid: allpid, allnow: allnow,
 oite: oite,opal:opal,
@@ -144,7 +87,7 @@ literr:literr
 })
 }
 
-router.get("/shop/pay", [getEma, getUsr, allPid, allPal,
+router.get("/shop/qr/sel", [getEma, getUsr, allPid, allPal,
 chk, gcb])
 
 module.exports = router

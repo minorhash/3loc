@@ -1,0 +1,59 @@
+<!--- paypal----- -->
+
+<div class="container-fluid">
+<h4><span class="label label-info">paypal</span></h4>
+<%if(allpal && allpal.length!==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<%for(var i=0;i<allpal.length;i++){%>
+<br>
+
+<div class="row">
+<div class="well col-md-10">
+<font color="#0000ff">
+<u><b>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+<%=allpal[i].utc %></b></u><br>
+</font>
+
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
+<%=allpal[i].id %></u><br>
+<br>
+</div><!-- col10 -->
+</div><!-- row-->
+
+
+<div class="row">
+<%for (var j=0;j<opal[i].length;j++){%>
+
+<div valign="top" align="center" class="col-md-3">
+<img src="../img/cd/<%= opal[i][j].sku%>.png" width="150">
+</div>
+
+<div class="well col-md-7">
+<div class="note">
+
+商品タイトル：<%=opal[i][j].name%><br>
+品番：TMS-&nbsp;<%=opal[i][j].sku%>&nbsp; <br>
+商品単価：&nbsp;<%= Number(opal[i][j].price).toLocaleString() %><%= shop.yen %>&nbsp; (税抜）<br>
+税：&nbsp;<%= (opal[i][j].tax).toLocaleString() %>円&nbsp;<br>
+数量：<%=opal[i][j].quantity%><br>
+</div><!-- note -->
+</div><!-- col7 -->
+
+<%}%>
+
+</div><!-- row-->
+
+<div class="row">
+<div align="left" class="col-md-8"></div>
+<div align="right" class="well col-md-2">
+
+送料：650<%= shop.yen %><br>
+小計：<%= Math.round((allpal[i].sum)*1.08).toLocaleString() %><%= shop.yen %><br>
+合計：<%= (Math.round((allpal[i].sum)*1.08)+650).toLocaleString() %><%= shop.yen %>
+</div>
+
+<%}%>
+</div><!-- row-->
+<%} else {%>paypal での購入はありません <%}%>
+</div>

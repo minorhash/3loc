@@ -90,9 +90,9 @@ taid.buyer.name1 = mailusr.name;
 taid.amount = tsum;
 }
 else{tsum=sum}
-    } else {
-      console.log('no sum');
-    }
+} else {
+console.log('no sum');
+}
 
 console.log("=== red sum ===")
   next()};

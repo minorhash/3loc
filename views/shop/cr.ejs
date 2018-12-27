@@ -13,25 +13,27 @@
 
 <div class="col-md-10" style="color:black">
 
-    <div class="box90"><%= title %></div><!-- box90-->
-    <br>
+<div class="box90"><%= title %></div><!-- box90-->
+<br>
 
-    <% if(usr) { %>
+<% if(usr) { %>
 <div class="well col-md-12" style="color:black">
 
 <% if(literr){ %> err:<p class="label label-default"> <%= literr %></p>
 <%} %>
 
-    <div class="well">
-        <% if(selqr){ %>
-    pid:<%= selqr.pid %><br>
-    <img src="<%= selqr.qr %>">
-    <% } else { %>
+<div class="well">
+<% if(selqr){ %>
+pid:<%= selqr.pid %><br>
+<img src="<%= selqr.qr %>">
+<% } else { %>
 no qr
-    <% } %>
-    </div><!-- well-->
+<% } %>
+</div><!-- well-->
 
 </div><!-- col12-->
+<% } else { %>
+no usr
 <% } %>
 
 </div><!-- col10-->
@@ -39,7 +41,6 @@ no qr
 
 </div><!--row-->
 </div><!-- /container -->
-
 
 </body>
 

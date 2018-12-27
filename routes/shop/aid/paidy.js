@@ -44,7 +44,7 @@ var getTmp = function(req, res, next) {
 var putMer = function(req, res, next) {
     mer=[],    skua=[]
   for (var i = 0; i < mailtmp.length; i++) {
-    mer[i] = db.skuMer(mailtmp[i].sku);
+    mer[i] = db.skuPre(mailtmp[i].sku);
 skua.push(mer[i].sku)
   }
   next()};
@@ -80,16 +80,13 @@ var redSum = function(req, res, next) {
     if (suma.length !== 0) {
       sum = suma.reduce(getSum);
 tax=Math.round(sum*0.08)
-if(ind!==-1){tsum=sum+tax+650;
+tsum=sum+tax
 
 // taid.buyer.email = email;
 // taid.buyer.name1 = mailusr.name;
-taid.amount = tsum;
-}
-else{tsum=Math.round(sum*1.08)
+
 taid.amount = tsum;
 
-}
     } else {
       console.log('no sum');
     }

@@ -5,14 +5,13 @@
 <div class="col-md-8">
 <% include ./img %>
 <br>
+
 <div  align="center" >
-<form method="post" action="/shop/cart">
-<input type="hidden" name="clr" value="yes">
-<button type="submit" ><%=shop.clr%></button>
-</form>
+
+<% include ./clr %>
+<% include ./bk %>
 </div>
 
-<% include ./bk%>
 </div>
 
 <div class="col-md-4">

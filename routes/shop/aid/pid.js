@@ -136,9 +136,7 @@ var chk = function(req, res, next) {
   console.log('=== PID =======================================');
 };
 
-var fun=
-[getEma, getUsr,putPid,senEma,
-chk]
+var fun=[getEma, getUsr,putPid,senEma,chk]
 router.put('/shop/aid/pid',fun);
 
     module.exports = router;

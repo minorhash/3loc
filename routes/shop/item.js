@@ -11,8 +11,8 @@ var str = crypto
 //console.log(str)
 
 var email, usr, sku
-    var skumer, mailusr, mailtmp, skuson
-    var obj, len;
+var skumer, mailusr, mailtmp, skuson
+var obj, len;
 // === post =============================
 var cred = require('./js/cred');
 
@@ -31,7 +31,7 @@ var getSku = function(req, res, next) {
 sku = req.body.sku;
 console.log(sku)
 if (sku) {
-try {skumer = db.skuMer(sku);
+try {skumer = db.skuPre(sku);
 } catch (err) {      console.log(err);    }
 } else {    console.log('no sku');  }
 next()}; //getSku
@@ -41,7 +41,7 @@ var getSon = function(req, res, next) {
 console.log(skuson)
 
   } catch (err) {    console.log(err);  }
-  if (skuson.song) {
+  if (skuson) {
     obj = JSON.parse(skuson.song);
     len = Object.keys(obj).length;
   } else {    console.log('no skuson');
@@ -50,9 +50,7 @@ console.log(skuson)
 
 var chk = function(req, res, next) {
   console.log(sku);
-  console.log(skuson);
-  console.log(obj);
-  console.log(len);
+  console.log(skumer);
   next();
 };
 // === rend

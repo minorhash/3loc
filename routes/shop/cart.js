@@ -55,7 +55,7 @@ var putMer = function(req, res, next) {
 mer = [];
 if (mailtmp) {
 for (var i = 0; i < mailtmp.length; i++) {
-mer[i] = db.skuMer(mailtmp[i].sku);
+mer[i] = db.skuPre(mailtmp[i].sku);
 }
 }else {    console.log("no mailtmp");  }
 next()};
@@ -145,6 +145,7 @@ var insUpd = function(req, res, next) {
     if (ind == -1) {
       db.insTmp(email, sku, uni);
       var hea = res.headersSent;
+      res.redirect("cart");
       console.log("=== head ==================");
       console.log(hea);
     } else {
@@ -190,8 +191,7 @@ var pcb = function(req, res, next) {
 
 
 router.post("/shop/cart", [
-  getEma,  getUsr,  getTmp,  getIte,  getSku, chkSh, insUpd,  clrEma,
-  chk,  pcb
-]);
+  getEma,  getUsr,  getTmp,  getIte,  getSku, insUpd,  clrEma,
+  chk,  pcb]);
 
 module.exports = router;

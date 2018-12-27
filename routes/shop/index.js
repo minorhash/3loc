@@ -5,6 +5,7 @@ var router = express.Router();
 var db = require("cardb");
 var adb = require("usrdb");
 var allmer = db.allMer();
+var allpre = db.allPre();
 
 var email, pss, usr;
 var mailusr;
@@ -31,17 +32,17 @@ var getUsr = function(req, res, next) {
 };
 
 var chk = function(req, res, next) {
-  console.log("=== get shop ===");
+  console.log("=== chk===");
   console.log(email);
   console.log(usr);
-  console.log(mailusr);
+  console.log(allpre);
   next();
 }; // chkEma
 
 var gcb = function(req, res) {
   res.render("shop", {
     title: "shop",
-    mer: allmer,
+    mer: allpre,
     usr: usr
   });
 };
@@ -63,8 +64,7 @@ req.session.pss = req.body.pss;
 } else {console.log("wrong");}
 } else {console.log("no req.body");}
 
-next();
-}; // getCok
+next();}; // getCok
 
 var posUsr = function(req, res, next) {
 if (req.session) {
@@ -77,15 +77,15 @@ usr = mailusr.name;
     usr = null;
     console.log("no usr");
 }
-  next();
-}; // getUsr
+next()}
 
 var rcb = function(req, res) {
-var rob = { usr: usr, mer: allmer };
+var rob = { usr: usr, mer: allpre};
 res.render("shop", rob);
 };
 
 var arr=[getCok, posUsr, chk, rcb];
 
 router.post("/shop",arr);
+
 module.exports = router;

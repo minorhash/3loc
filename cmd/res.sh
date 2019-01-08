@@ -1,13 +1,8 @@
 pw=$(pwd)
 
 echo $pw
-str=${pw: -3}
+str=${pw: -4}
 
 echo $str
 
-log=$(forever list|grep $str|grep -vi stopped|awk '{print $3}')
-
-echo $home/.forever/$log.log
-#$home/.forever/$log.log
-
-forever restart $pw/bin/www 
+pm2 restart bin/www 2>&1|grep --color ids|awk '{print $8}'

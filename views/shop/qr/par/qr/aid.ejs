@@ -8,10 +8,9 @@
 <br>
 <%if(allpid && allpid.length!==0){%>
 
-<div class="row">
-
 <%for(var i=0;i<allpid.length;i++){%>
 
+<div class="row">
 <div class="well col-md-10">
 
 <font color="red">
@@ -19,7 +18,7 @@
 <%=allpid[i].date%></u></b><br>
 </font>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
-    <form method="post" action="/shop/qr/cr">
+<form method="post" action="/shop/qr/cr">
 <input type="hidden" value="<%=allpid[i].pid%>" name="pid">
 
 <button><%= allpid[i].pid %></button>

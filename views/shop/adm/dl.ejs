@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<% include par/nav %>
+<body>
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-2" style="color:black">
+<% include par/left %>
+</div><!-- col2-->
+
+<div class="col-md-10" style="color:black">
+<div class="box90"><%= title %></div><!-- box90-->
+<br>
+
+<% if(usr) { %>
+<div class="well col-md-6" style="color:black">
+<% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
+クリックQR コードをダウンロードしてください。
+<div class="well">
+<% if(selqr){ %>
+pid:<%= selqr.pid %><br>
+<a href="<%= selqr.qr %>" download>
+<img src="<%= selqr.qr %>">
+</a>
+<% } else { %>
+no qr
+<% } %>
+</div><!-- well-->
+
+</div><!-- col12-->
+
+<div class="well col-md-6" style="color:black">
+col2<br>
+
+pid:<%= selqr.pid %><br>
+ステータス:
+<% if(selqr.act===0){ %>
+
+<button type="button" class="btn btn-primary">アクティブ</button><br><br>
+
+<a href="/shop/adm/hid">no</a>
+
+<form method="post" action="/shop/adm/hid">
+<div class="form-group">
+<input class="form-control" name="pid" type="hidden" value="no">
+<button type="submit" class="btn btn-danger">
+ディアクティベート
+</button>
+しますか？
+</div>
+</form>
+<% } else { %>
+
+<button type="button" class="btn btn-primary">日アクティブ</button>
+<% } %>
+<br>
+<br>
+
+</div><!-- col2-->
+
+<% } else { %>
+no usr
+<% } %>
+
+</div><!-- col10-->
+
+
+</div><!--row-->
+</div><!-- /container -->
+
+</body>
+

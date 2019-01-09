@@ -36,7 +36,6 @@ next()}
 
 // ins QR
 var insQR= function(req, res, next) {
-var QRCode = require('qrcode')
 //var json=JSON.stringify(getpid)
 
 name=JSON.parse(getpid.buy)
@@ -51,12 +50,13 @@ arr+=
 }
 var fin=str+arr
 
- QRCode.toDataURL(fin, function (err, url) {
- try{
- adb.insQR(getpid.pid,url)
- }catch(err){
-     console.log(err.name)
-     literr=err.message.substring(0,6)
+var QRCode = require('qrcode')
+QRCode.toDataURL(fin, function (err, url) {
+try{
+adb.insQR(getpid.pid,url,0)
+}catch(err){
+console.log(err.name)
+literr=err.message.substring(0,6)
 }
 })
 next()}

@@ -31,6 +31,7 @@ else{usr=null;console.log("no usr")}
 }else{console.log("no pss")}
 next()};
 
+// === put pid =============================
 var putPid = function(req, res, next) {
 //res.redirect("pid")
 
@@ -47,26 +48,57 @@ age
 .set("Authorization", "Bearer"+sec)
 .then(res => {
     //console.log(res.body.buyer);
+    try{
 adb.insPid(email,pid,res.body.amount,
 JSON.stringify(res.body.buyer),
 JSON.stringify(res.body.order.items),
 utc);
+    }catch(err){console.log(err)}
 
 })
 
 } else {
 //var    pid = 'pay_Wz8zdysAAF0AirLI'
 console.log("no pid");  }
+
 next()};
 
+
 var getPid= function(req, res, next) {
-//gpid=adb.pidPid(pid)
+getpid=adb.pidPid(pid)
 
 console.log(pid)
 console.log(ite)
 //ite=gpid.ite
 //oite=JSON.parse(ite)
 next()};
+
+var insQR= function(req, res, next) {
+//var json=JSON.stringify(getpid)
+
+name=JSON.parse(getpid.buy)
+ite=JSON.parse(getpid.ite)
+
+var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
+var arr=[]
+
+for(var i=0;i<ite.length;i++){
+arr+=
+"商品名:"+ite[i].title+", 個数:"+ite[i].quantity
+}
+var fin=str+arr
+
+var QRCode = require('qrcode')
+QRCode.toDataURL(fin, function (err, url) {
+try{
+adb.insQR(getpid.pid,url,0)
+}catch(err){
+console.log(err.name)
+literr=err.message.substring(0,6)
+}
+})
+next()}
+
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
@@ -133,10 +165,11 @@ var chk = function(req, res, next) {
   console.log('=== PID =======================================');
   console.log(email);
   console.log(pid);
+  console.log(getpid);
   console.log('=== PID =======================================');
 };
 
-var fun=[getEma, getUsr,putPid,senEma,chk]
+var fun=[getEma, getUsr,putPid,getPid,senEma,chk]
 router.put('/shop/aid/pid',fun);
 
     module.exports = router;

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<% include par/nav %>
+<body>
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-2" style="color:black">
+<% include par/left %>
+</div><!-- col2-->
+
+<div class="col-md-10" style="color:black">
+
+<div class="box90">QR CODE</div><!-- box90-->
+
+
+<% if(usr){ %>
+<%= pid %>
+
+<% } else { %>
+please log in.
+<% } %>
+</div><!-- col10-->
+
+
+</div><!--row-->
+</div><!-- /container -->
+</body>
+

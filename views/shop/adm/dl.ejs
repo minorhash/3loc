@@ -39,19 +39,37 @@ pid:<%= selqr.pid %><br>
 ステータス:
 <% if(selqr.act===0){ %>
 
-<button type="button" class="btn btn-primary">アクティブ</button><br><br>
+<button  class="btn btn-primary">有効</button><br><br>
 
-<a href="/shop/adm/hid">no</a>
-
-<form method="post" action="/shop/adm/hid">
-<div class="form-group">
-<input class="form-control" name="pid" type="hidden" value="no">
-<button type="submit" class="btn btn-danger">
-ディアクティベート
+<form action="/shop/adm/hid">
+<input type="hidden" name="pid" value="<%= selqr.pid %>">
+<button type="submit"  class="btn btn-danger">
+無効
 </button>
-しますか？
-</div>
 </form>
+にしますか？
+
+<p id="demo"></p>
+
+<script>
+function func() {
+
+
+
+var loc= "http://localhost:3027";
+var pid="<%= selqr.pid %>";
+var dat={pid:pid};
+var xhr = new XMLHttpRequest();
+xhr.open("get", loc+"/shop/adm/hid", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify(dat));
+
+document.getElementById("demo").innerHTML = pid;
+
+}
+
+</script>
+
 <% } else { %>
 
 <button type="button" class="btn btn-primary">日アクティブ</button>

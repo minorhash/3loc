@@ -64,7 +64,7 @@ app.use('/', ite)
 })
 
 // === qr ===
-var aqr=["sel","cr","dl"]
+var aqr=["sel","cr","dl","hid"]
 
 for(var i=0;i<aqr.length;i++){
 aqr[i]=require('./routes/shop/qr/'+aqr[i]);

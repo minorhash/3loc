@@ -123,9 +123,9 @@ next()}
 // chk
 var chk = function(req, res, next) {
 host = url.format({
-    protocol: req.protocol,
-    host: req.get('host'),
-    pathname: req.originalUrl,
+protocol: req.protocol,
+host: req.get('host'),
+pathname: req.originalUrl,
 });
 
 console.log("=== chk =====================")
@@ -163,12 +163,13 @@ literr:literr
 //res.redirect("/shop/qr-"+pid)
 }
 
-//router.put("/shop/adm/dl", [getEma, getUsr, setPid,allPid, allPal,insQR])
+//router.put("/shop/adm/dl", [getEma, getUsr, setPid,allPid, allPal,selQR,
+//chk])
 
 // router.post("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
 // chk, gcb])
 
-router.get("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+router.all("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
 chk, gcb])
 
 module.exports = router

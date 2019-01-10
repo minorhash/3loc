@@ -37,7 +37,7 @@ next()};
 //  aid
 var posPid = function(req, res, next) {
 
-pid=req.query.pid
+pid=req.body.pid
 
 next()}
 
@@ -50,18 +50,22 @@ var host = url.format({
 
 console.log("=== chk =====================")
 console.log(email)
-console.log(req.param)
-console.log(req.query.pid)
+console.log(pid)
 next()}
 
 var gcb = function(req, res) {
-res.render("shop/adm/hid", {
+res.render("shop/qr/hid", {
 title: "qr code", usr: usr, pid: pid
 })
 }
 
-router.all("/shop/adm/hid", [getEma, getUsr,posPid,
+router.put("/shop/qr/hid", [getEma, getUsr,posPid,
+chk])
+
+router.get("/shop/qr/hid", [getEma, getUsr,posPid,
 chk, gcb])
 
+router.post("/shop/qr/hid", [getEma, getUsr,posPid,
+chk, gcb])
 
 module.exports = router

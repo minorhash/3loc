@@ -41,7 +41,7 @@ pid:<%= selqr.pid %><br>
 
 <button  class="btn btn-primary">有効</button><br><br>
 
-<form action="/shop/adm/hid">
+<form method="get" action="/shop/adm/hid">
 <input type="hidden" name="pid" value="<%= selqr.pid %>">
 <button type="submit"  class="btn btn-danger">
 無効
@@ -53,8 +53,6 @@ pid:<%= selqr.pid %><br>
 
 <script>
 function func() {
-
-
 
 var loc= "http://localhost:3027";
 var pid="<%= selqr.pid %>";

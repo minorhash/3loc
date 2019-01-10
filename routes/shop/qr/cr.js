@@ -43,12 +43,13 @@ ite=JSON.parse(getpid.ite)
 
 var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
 var arr=[]
+var adm="http://localhost:3027/shop/adm/dl-"+pid
 
 for(var i=0;i<ite.length;i++){
 arr+=
 "商品名:"+ite[i].title+", 個数:"+ite[i].quantity
 }
-var fin=str+arr
+var fin=str+arr+adm
 
 var QRCode = require('qrcode')
 QRCode.toDataURL(fin, function (err, url) {

@@ -1,10 +1,11 @@
 <div class="row"><br>
 <div class="col-md-10">
 <h4 align="center"><span class="label label-danger">paidy</span></h4>
-</div>
+</div><!-- col10 -->
 
 <div class="col-md-2"></div>
-</div>
+</div><!-- row -->
+
 <br>
 <%if(allpid && allpid.length!==0){%>
 
@@ -16,6 +17,7 @@
 <font color="red">
 <b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
 <%=allpid[i].date%></u></b><br>
+</u>
 </font>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <form method="post" action="/shop/qr/cr">
@@ -24,13 +26,13 @@
 <button><%= allpid[i].pid %></button>
 </form>
 
-</u><br>
+</u>
 </div><!-- col10-->
 
+</div><!-- row-->
 
 <%}%>
 
-</div><!-- row-->
 <%} else {%> paidyでの購入はありません <%}%>
 
 

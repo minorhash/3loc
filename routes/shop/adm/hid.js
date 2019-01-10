@@ -37,7 +37,7 @@ next()};
 //  aid
 var posPid = function(req, res, next) {
 
-pid=req.query.pid
+pid=req.body.pid
 
 next()}
 
@@ -50,8 +50,7 @@ var host = url.format({
 
 console.log("=== chk =====================")
 console.log(email)
-console.log(req.param)
-console.log(req.query.pid)
+console.log(pid)
 next()}
 
 var gcb = function(req, res) {

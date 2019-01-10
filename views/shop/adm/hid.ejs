@@ -15,15 +15,19 @@
 
 <div class="box90">QR CODE</div><!-- box90-->
 
-usr:<%= usr %>
-pid:<%= pid %>
-<% if(usr){ %>
-<%= pid %>
+<br>
+<div class="well">
+<% if(pid){ %>
 
+<button class="btn btn-warning">
+<%= pid %>
+</button>
+を無効にしました。
 <% } else { %>
-please log in.
+no pid
 <% } %>
 
+</div>
 </div><!-- col10-->
 
 

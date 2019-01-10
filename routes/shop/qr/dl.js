@@ -110,7 +110,7 @@ console.log("===== pid:",selqr.pid)
 
 var snde = require('snd-ema');
 var img="<img src=\""+selqr.qr+"\">"
-var link="<a href=\"http://localhost:3027/shop/adm/dl-"+pid+"\">"+"link"+"</a>"
+var link="<a href=\"http://localhost:3027/shop/qr/dl-"+pid+"\">"+"link"+"</a>"
 
 try{
 var tr=snde.trEma(email,"sub",link)

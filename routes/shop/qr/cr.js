@@ -33,11 +33,13 @@ pid=req.body.pid
 var pat1=/pay/g
 boo=pat1.test(pid)
 if(boo===true){
-console.log("paidy")
 getpid=adb.getPid(pid)
+console.log("paidy")
+console.log(getpid)
 }else{
 idpal=adb.idPal(pid)
 console.log("paypal")
+console.log(idpal)
 }
 next()}
 
@@ -77,10 +79,32 @@ console.log(err.name)
 literr=err.message.substring(0,6)
 }
 })
+
 }else{
-console.log("=== boo ===")
 console.log(boo)
+console.log("=== paypal ===")
+
+ite=JSON.parse(idpal.ite)
+var str="金額:"+(idpal.sum).toLocaleString()+"円\n"
+var arr=[]
+var lin="http://3loc.tmsmusic.tokyo/shop/adm/dl-"+pid
+
+for(var i=0;i<ite.length;i++){
+arr+=
+"商品名:"+ite[i].name+", 個数:"+ite[i].quantity+"\n"
 }
+var fin=str+arr+lin
+
+var QRCode = require('qrcode')
+QRCode.toDataURL(fin, function (err, url) {
+try{
+adb.insQR(idpal.id,url,0)
+}catch(err){
+console.log(err.name)
+literr=err.message.substring(0,6)
+}
+})
+}//else
 
 next()}
 

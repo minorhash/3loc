@@ -34,17 +34,9 @@ getpid=adb.getPid(pid)
 }else{console.log("no pid")}
 next()}
 
-var delQR = function(req, res, next) {
-
-if(pid){
-try{adb.delQR(pid)}
-catch(err){console.log(err)}
-}else{console.log("no pid")}
-
-next()}
-
 // ins QR
 var insQR= function(req, res, next) {
+var QRCode = require('qrcode')
 //var json=JSON.stringify(getpid)
 
 name=JSON.parse(getpid.buy)
@@ -52,18 +44,16 @@ ite=JSON.parse(getpid.ite)
 
 var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
 var arr=[]
-var lin="http://3loc.tmsmusic.tokyo/shop/adm/dl-"+pid
 
 for(var i=0;i<ite.length;i++){
 arr+=
-"商品名:"+ite[i].title+", 個数:"+ite[i].quantity+"\n"
+"商品名:"+ite[i].title+", 個数:"+ite[i].quantity
 }
-var fin=str+arr+lin
+var fin=str+arr
 
-var QRCode = require('qrcode')
 QRCode.toDataURL(fin, function (err, url) {
 try{
-adb.insQR(getpid.pid,url,0)
+adb.insQR(getpid.pid,url)
 }catch(err){
 console.log(err.name)
 literr=err.message.substring(0,6)
@@ -89,7 +79,7 @@ console.log(host)
 next()}
 
 var gcb = function(req, res) {
-res.render("shop/qr/cr", {
+res.render("shop/adm/cr", {
 title: "qr code", usr: usr, selpid: selpid,pid:pid,
 allpid: allpid, allnow: allnow,
 oite: oite,opal:opal,
@@ -100,7 +90,7 @@ literr:literr
 //res.redirect("/shop/qr-"+pid)
 }
 
-router.post("/shop/qr/cr", [getEma, getUsr, setPid,delQR,insQR,
+router.post("/shop/adm/cr", [getEma, getUsr, setPid,insQR,
 chk, gcb])
 
 // router.get("/shop/cr-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,

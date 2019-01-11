@@ -113,8 +113,9 @@ var img="<img src=\""+selqr.qr+"\">"
     var str="をクリックしてください。"
 var link="<a href=\"http://3loc.tmsmusic.tokyo/shop/adm/dl-"+pid+"\">"+"リンク"+"</a>"
 
+
 try{
-var tr=snde.trEma(email,"sub",link+str)
+var tr=snde.trEma(email,"sub",link)
 console.log(typeof tr)
 }catch(err){console.log(err)}
 

@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -75,6 +75,7 @@ app.use('/', aqr[i]);
 var aadm=["dl","hid"]
 
 for(var i=0;i<aadm.length;i++){
+
 aadm[i]=require('./routes/shop/adm/'+aadm[i]);
 app.use('/', aadm[i]);
 }

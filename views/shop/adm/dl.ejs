@@ -22,12 +22,15 @@
 <% if(selqr){ %>
 
 クリックQR コードをダウンロードしてください。
+<div class="well">
+<% if(selqr){ %>
 pid:<%= selqr.pid %><br>
 <a href="<%= selqr.qr %>" download>
 <img src="<%= selqr.qr %>">
 </a>
 <% } else { %>
 注文がありません。
+no qr
 <% } %>
 </div><!-- well-->
 
@@ -48,6 +51,13 @@ col2<br>
 <a href="http://3loc.tmsmusic.tokyo/shop/adm/hid">hid</a>
 
 <form method="get" action="/shop/adm/hid">
+pid:<%= selqr.pid %><br>
+ステータス:
+<% if(selqr.act===0){ %>
+
+<button  class="btn btn-primary">有効</button><br><br>
+
+<form method="post" action="/shop/adm/hid">
 <input type="hidden" name="pid" value="<%= selqr.pid %>">
 <button type="submit"  class="btn btn-danger">
 無効
@@ -58,6 +68,28 @@ col2<br>
 <% } else { %>
 
 <button type="button" class="btn btn-primary">非アクティブ</button>
+<p id="demo"></p>
+
+<script>
+function func() {
+
+var loc= "http://localhost:3027";
+var pid="<%= selqr.pid %>";
+var dat={pid:pid};
+var xhr = new XMLHttpRequest();
+xhr.open("get", loc+"/shop/adm/hid", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify(dat));
+
+document.getElementById("demo").innerHTML = pid;
+
+}
+
+</script>
+
+<% } else { %>
+
+<button type="button" class="btn btn-primary">日アクティブ</button>
 <% } %>
 <br>
 <br>
@@ -68,6 +100,7 @@ col2<br>
 
 please log in.
 
+no usr
 <% } %>
 
 </div><!-- col10-->

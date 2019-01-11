@@ -75,17 +75,53 @@ catch(err){console.log(err)}
 }else{console.log("no pid")}
 
 next()}
+//  ins qr
+//var insQR= function(req, res, next) {
+//var QRCode = require('qrcode')
+////var json=JSON.stringify(getpid)
+
+//    name=JSON.parse(getpid.buy)
+//    ite=JSON.parse(getpid.ite)
+
+//var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
+//var arr
+
+//for(var i=0;i<ite.length;i++){
+//arr+=
+//"\n商品名:"+ite[i].title+", 個数:"+ite[i].quantity
+//}
+//var fin=arr
+
+// QRCode.toDataURL(fin, function (err, url) {
+// try{
+// adb.insQR(getpid.pid,url)
+// }catch(err){
+//     console.log(err.name)
+//     literr=err.message.substring(0,6)
+//}
+//})
+//next()}
 
 //  sel qr
 var selQR= function(req, res, next) {
 
 if(pid){
 
-try{selqr=adb.selQR(pid)}
-catch(err){console.log(err)}
+try{
+selqr=adb.selQR(pid)
+}catch(err){console.log(err)}
 
 if(selqr){
 console.log("===== pid:",selqr.pid)
+
+// var snde = require('snd-ema');
+// var img="<img src=\""+selqr.qr+"\">"
+// var link="<a href=\"http://localhost:3027/shop/qr-"+pid+"\">"+"link"+"</a>"
+
+    // try{
+    // var tr=snde.trEma(email,"sub",link)
+    // console.log(typeof tr)
+    // }catch(err){console.log(err)}
 
 }else { console.log("no selqr")}
 }else { console.log("no pid")}
@@ -98,6 +134,9 @@ host = url.format({
     protocol: req.protocol,
     host: req.get('host'),
     pathname: req.originalUrl,
+protocol: req.protocol,
+host: req.get('host'),
+pathname: req.originalUrl,
 });
 
 console.log("=== chk =====================")
@@ -123,7 +162,7 @@ literr:literr
 
 }
 
-router.get("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+router.all("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
 chk, gcb])
 
 module.exports = router

@@ -49,6 +49,11 @@ catch(err){console.log(err)}
 }else{console.log("no pid")}
 next()}
 
+var posPid = function(req, res, next) {
+
+pid=req.body.pid
+
+next()}
 
 var chk = function(req, res, next) {
 var host = url.format({
@@ -61,6 +66,7 @@ console.log("=== chk =====================")
 console.log(email)
 console.log(usr)
 console.log(req.query.pid)
+console.log(pid)
 next()}
 
 var gcb = function(req, res) {

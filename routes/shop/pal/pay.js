@@ -72,24 +72,6 @@ skumer=db.skuPre(tmp_a[i].sku)
     } else {        console.log("no tmp_a")    }
 next()}
 
-
-// var chkSh= function(req, res, next) {
-
-// boa=[]
-// for(var i=0;i<skua.length;i++){
-
-// console.log("=== chk dl ===")
-// var pat=/^\d{3}$/;
-// var test=pat.test(skua[i])
-// boa.push(test)
-// }
-
-// console.log(skua)
-// console.log(boa)
-// ind=boa.indexOf(true)
-
-// next()};
-
 // === sum ===
 var getSum = function(req, res, next) {
     sum_a = []
@@ -115,7 +97,7 @@ var sadd=add.toString()
         tran.amount.details.subtotal =sub
         tran.amount.details.tax=itax
         tran.amount.details.shipping=0
-        tran.amount.total =sum
+        tran.amount.total =ssum
 }
     next()}
 
@@ -125,7 +107,7 @@ var chk = function(req, res, next) {
     console.log("=== pay ===")
     console.log(mailtmp)
     console.log(tmp_a[0].sku)
-    console.log(skumer)
+    console.log(mypal.transactions[0])
     next()}
 
 var goPal = function(req, res) {
@@ -156,7 +138,7 @@ var rcb = function(req, res) {
 
 router.get("/shop/paypal/pay",
 //[getEma,getUsr,putTmp,putMer,getSum,
-[getEma,getUsr,putTmp,putMer,getSum,
+[getEma,getUsr,putTmp,putMer,getSum,goPal,
 chk,rcb
 ])
 

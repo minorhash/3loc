@@ -60,10 +60,16 @@ next()}
 var setPid= function(req, res, next) {
 //pid=req.body.pid
 pid=req.params.id
+    var pat1=/pay/g
+    boo=pat1.test(pid)
 //pid="pay_XAjslFYAAGEAiXdP"
-if(pid){
+if(boo===true){
 getpid=adb.getPid(pid)
-}else{console.log("no pid")}
+}else{
+
+getpid=adb.idPal(pid)
+
+    console.log("no pid")}
 
 next()}
 
@@ -100,13 +106,11 @@ var selQR= function(req, res, next) {
 console.log("########### sel qr")
 console.log(req.body.pid)
 
-if(pid){
 try{
 selqr=adb.selQR(pid)
 }catch(err){console.log(err)}
 if(selqr){
 console.log("===== pid:",selqr.pid)
-
 
 var snde = require('snd-ema');
 var img="<img src=\""+selqr.qr+"\">"
@@ -120,7 +124,8 @@ console.log(typeof tr)
 }catch(err){console.log(err)}
 
 }else { console.log("no selqr")}
-}else { console.log("no allpid")}
+
+
 
 next()}
 

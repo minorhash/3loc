@@ -23,15 +23,13 @@
 
 クリックQR コードをダウンロードしてください。
 <div class="well">
-<% if(selqr){ %>
 pid:<%= selqr.pid %><br>
 <a href="<%= selqr.qr %>" download>
 <img src="<%= selqr.qr %>">
 </a>
-<% } else { %>
-注文がありません。
-no qr
-<% } %>
+<% } else { %> no qr <% } %>
+<% } else { %> no usr <% } %>
+
 </div><!-- well-->
 
 </div><!-- col12-->
@@ -68,28 +66,7 @@ pid:<%= selqr.pid %><br>
 <% } else { %>
 
 <button type="button" class="btn btn-primary">非アクティブ</button>
-<p id="demo"></p>
 
-<script>
-function func() {
-
-var loc= "http://localhost:3027";
-var pid="<%= selqr.pid %>";
-var dat={pid:pid};
-var xhr = new XMLHttpRequest();
-xhr.open("get", loc+"/shop/adm/hid", true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.send(JSON.stringify(dat));
-
-document.getElementById("demo").innerHTML = pid;
-
-}
-
-</script>
-
-<% } else { %>
-
-<button type="button" class="btn btn-primary">日アクティブ</button>
 <% } %>
 <br>
 <br>

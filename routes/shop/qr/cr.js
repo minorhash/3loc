@@ -119,6 +119,7 @@ host = url.format({
 console.log("=== chk =====================")
 console.log(pid)
 console.log(email)
+console.log(boo)
 
 console.log("=== oite =====")
 //console.log(oite)

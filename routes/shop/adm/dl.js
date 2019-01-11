@@ -73,10 +73,14 @@ next()}
 
 var delQR = function(req, res, next) {
 
-if(pid){
+if(boo===true){
 try{adb.delQR(pid)}
 catch(err){console.log(err)}
-}else{console.log("no pid")}
+}else{
+try{adb.pdelQR(pid)}
+catch(err){console.log(err)}
+
+    console.log("no pid")}
 
 next()}
 //  sel qr

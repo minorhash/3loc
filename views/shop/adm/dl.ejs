@@ -12,17 +12,16 @@
 </div><!-- col2-->
 
 <div class="col-md-10" style="color:black">
+
 <div class="box90"><%= title %></div><!-- box90-->
 <br>
 
 <% if(usr) { %>
 <div class="well col-md-6" style="color:black">
 <% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
-<div class="well">
 <% if(selqr){ %>
 
 クリックQR コードをダウンロードしてください。
-<div class="well">
 pid:<%= selqr.pid %><br>
 <a href="<%= selqr.qr %>" download>
 <img src="<%= selqr.qr %>">
@@ -30,26 +29,17 @@ pid:<%= selqr.pid %><br>
 <% } else { %> no qr <% } %>
 <% } else { %> no usr <% } %>
 
-</div><!-- well-->
+</div><!-- col6-->
 
-</div><!-- col12-->
 
 <div class="well col-md-6" style="color:black">
-col2<br>
 
-<br>
-ステータス:
 <% if(selqr){ %>
-<button  class="btn btn-info">pid
-<%= selqr.pid %>
-</button>
 
-<button  class="btn btn-primary">有効</button><br><br>
-
-<a href="http://3loc.tmsmusic.tokyo/shop/adm/hid">hid</a>
+<button class="btn btn-info"><%= selqr.pid %></button>
 
 <form method="get" action="/shop/adm/hid">
-pid:<%= selqr.pid %><br>
+
 ステータス:
 <% if(selqr.act===0){ %>
 
@@ -60,8 +50,8 @@ pid:<%= selqr.pid %><br>
 <button type="submit"  class="btn btn-danger">
 無効
 </button>
-</form>
 にしますか？
+</form>
 
 <% } else { %>
 

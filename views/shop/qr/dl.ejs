@@ -20,15 +20,17 @@
 <div class="well col-md-12" style="color:black">
 
 <% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
-クリックしてQR コードをダウンロードしてください。
 <div class="well">
+
 <% if(selqr){ %>
+
+クリックしてQR コードをダウンロードしてください。
 pid:<%= selqr.pid %><br>
 <a href="<%= selqr.qr %>" download>
 <img src="<%= selqr.qr %>">
 </a>
 <% } else { %>
-no qr
+qrコードがありません。
 <% } %>
 </div><!-- well-->
 

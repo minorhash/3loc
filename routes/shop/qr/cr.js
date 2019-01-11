@@ -8,10 +8,11 @@ var age=require("superagent")
 var cnf=require("./son/aid.json")
 // === glob ============================
 var email, usr,pid
-var selpid, allpid,allnow,allpal,selqr,getpid
+var selpid, allpid,allnow,allpal,selqr
+    var getpid,idpal
 var ite, oite,opal,ship
 var jpal=[],opal=[]
-var literr,name,ite,host
+var literr,name,ite,host,boo
 
 var cred = require("./js/cred")
 // === get ============================
@@ -29,9 +30,15 @@ next()};
 var setPid= function(req, res, next) {
 pid=req.body.pid
 //pid="pay_XAjslFYAAGEAiXdP"
-if(pid){
+var pat1=/pay/g
+boo=pat1.test(pid)
+if(boo===true){
+console.log("paidy")
 getpid=adb.getPid(pid)
-}else{console.log("no pid")}
+}else{
+idpal=adb.idPal(pid)
+console.log("paypal")
+}
 next()}
 
 var delQR = function(req, res, next) {
@@ -45,8 +52,9 @@ next()}
 
 // ins QR
 var insQR= function(req, res, next) {
-//var json=JSON.stringify(getpid)
 
+if(boo===true){
+//var json=JSON.stringify(getpid)
 name=JSON.parse(getpid.buy)
 ite=JSON.parse(getpid.ite)
 
@@ -69,6 +77,11 @@ console.log(err.name)
 literr=err.message.substring(0,6)
 }
 })
+}else{
+console.log("=== boo ===")
+console.log(boo)
+}
+
 next()}
 
 // chk

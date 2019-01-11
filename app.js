@@ -64,11 +64,19 @@ app.use('/', ite)
 })
 
 // === qr ===
-var aqr=["sel","cr","dl"]
+var aqr=["sel","cr","dl","hid"]
 
 for(var i=0;i<aqr.length;i++){
 aqr[i]=require('./routes/shop/qr/'+aqr[i]);
 app.use('/', aqr[i]);
+}
+
+// === adm ===
+var aadm=["dl","hid"]
+
+for(var i=0;i<aadm.length;i++){
+aadm[i]=require('./routes/shop/adm/'+aadm[i]);
+app.use('/', aadm[i]);
 }
 
 // === not ===
@@ -103,6 +111,11 @@ amer.forEach(function(ite){
 ite=require('./routes/mer/'+ite)
 app.use('/', ite)
 })
+
+// var p404 = require('./routes/shop/404');
+// app.use('/', p404);
+
+
 //app.use('/', con);
 // === login ===
 ausr=["sig","sigp","out","adr","adrp","forg"]
@@ -118,8 +131,22 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
+if(err.status === 403){
+       return res.send('Action forbidden!');
+   }
+
+   if(err.status === 404){
+       return res.send('Page not found!');
+   }
+
+   // when status is 500, error handler
+   if(err.status === 500) {
+       return res.send('Server error occured!');
+   }
+
   res.render('error');
 });
+
 
 //var ses,usr,title,sku,nam,pri,uni,sum,myerr;
 

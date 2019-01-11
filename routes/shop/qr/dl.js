@@ -58,7 +58,8 @@ next()}
 
 //  getpid
 var setPid= function(req, res, next) {
-pid=req.body.pid
+//pid=req.body.pid
+pid=req.params.id
 //pid="pay_XAjslFYAAGEAiXdP"
 if(pid){
 getpid=adb.getPid(pid)
@@ -108,13 +109,14 @@ console.log("===== pid:",selqr.pid)
 
 
 var snde = require('snd-ema');
-    var img="<img src=\""+selqr.qr+"\">"
-    var link="<a href=\"http://localhost:3000/shop/qr-"+pid+"\">"+"link"+"</a>"
+var img="<img src=\""+selqr.qr+"\">"
+    var str="をクリックしてください。"
+var link="<a href=\"http://3loc.tmsmusic.tokyo/shop/adm/dl-"+pid+"\">"+"リンク"+"</a>"
 
-    // try{
-    // var tr=snde.trEma(email,"sub",link)
-    // console.log(typeof tr)
-    // }catch(err){console.log(err)}
+try{
+var tr=snde.trEma(email,"sub",link+str)
+console.log(typeof tr)
+}catch(err){console.log(err)}
 
 }else { console.log("no selqr")}
 }else { console.log("no allpid")}
@@ -124,9 +126,9 @@ next()}
 // chk
 var chk = function(req, res, next) {
 host = url.format({
-    protocol: req.protocol,
-    host: req.get('host'),
-    pathname: req.originalUrl,
+protocol: req.protocol,
+host: req.get('host'),
+pathname: req.originalUrl,
 });
 
 console.log("=== chk =====================")

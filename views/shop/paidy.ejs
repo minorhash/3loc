@@ -29,10 +29,11 @@
 </div><!-- pa2-->
 </div><!-- col8-->
 
-<%}%>
+<%} else { %>
+no seltmp
 <%}%>
 
-
+<%}%><!-- for -->
 <div class="col-md-8 hidden-xs"></div>
 <div class="col-md-4 hidden-xs">
 <div class="pabox">商品合計(税込）：</div>
@@ -65,7 +66,7 @@ var config={
 "logo_url":"http://www.paidy.com/images/logo.png",
 "closed":function(cb){
 
-var loc= "http://localhost:3000";
+var loc= "http://localhost:3027";
 
 var xhr = new XMLHttpRequest();
 xhr.open("PUT", loc+"/shop/aid/pid", true);

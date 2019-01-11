@@ -41,8 +41,8 @@ console.log('=== adr null ===');
 next()};
 
 var getTmp = function(req, res, next) {
-    mailtmp = db.mailTmp(email);
-  next()};
+mailtmp = db.mailTmp(email);
+next()};
 
 var putMer = function(req, res, next) {
     mer=[],    skua=[]

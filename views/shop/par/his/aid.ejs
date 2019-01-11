@@ -2,11 +2,10 @@
 
 <div class="container-fluid">
 <%if(allpid && allpid.length!==0){%>
-&nbsp;&nbsp;&nbsp;&nbsp;
-
-<div class="row">
 
 <%for(var i=0;i<allpid.length;i++){%>
+
+<div class="row">
 <div class="well col-md-10">
 <font color="red">
 <b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
@@ -14,16 +13,25 @@
 </font>
 <u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
 <%=allpid[i].pid%></u><br>
+
 </div><!-- col12-->
 </div><!-- row-->
 
 <div class="row">
 
 <%if(oite && oite.length!==0){%>
-<%for (var j=0;j<oite[i].length;j++){%>
+<% for (var j=0;j<oite[i].length;j++){ %>
+<% var pat1=/^3/g %>
+<% var res=pat1.test(oite[i][j].id) %>
 
 <div align="center" class="col-md-3">
+
+<%= res %>
+<% if(res===false){ %>
 <img src="../img/pre/<%=oite[i][j].id%>.png" width="150cm" height="150mm">
+<% } else {%>
+<img src="../img/cd/<%=oite[i][j].id%>.png" width="150cm" height="150mm">
+<% } %>
 </div><!-- col3-->
 
 <div class="well col-md-7">
@@ -36,13 +44,12 @@
 
 </div><!-- note-->
 </div><!-- col7-->
-<%}%>
+<% } %><!-- for -->
+
 
 <div align="right" class="col-md-8"></div><!-- col8-->
 
 <div align="right" class="well col-md-2">
-送料：650円<br>
-小計：&nbsp;<%= (allpid[i].mnt-650).toLocaleString() %>円<br>
 合計金額：<%=allpid[i].mnt.toLocaleString()%>円<br>
 </div><!-- col2-->
 

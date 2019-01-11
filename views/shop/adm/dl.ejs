@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<% include par/nav %>
+<body>
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-2" style="color:black">
+<% include par/left %>
+</div><!-- col2-->
+
+<div class="col-md-10" style="color:black">
+<div class="box90"><%= title %></div><!-- box90-->
+<br>
+
+<% if(usr) { %>
+<div class="well col-md-6" style="color:black">
+<% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
+<div class="well">
+<% if(selqr){ %>
+
+クリックQR コードをダウンロードしてください。
+pid:<%= selqr.pid %><br>
+<a href="<%= selqr.qr %>" download>
+<img src="<%= selqr.qr %>">
+</a>
+<% } else { %>
+注文がありません。
+<% } %>
+</div><!-- well-->
+
+</div><!-- col12-->
+
+<div class="well col-md-6" style="color:black">
+col2<br>
+
+<br>
+ステータス:
+<% if(selqr){ %>
+<button  class="btn btn-info">pid
+<%= selqr.pid %>
+</button>
+
+<button  class="btn btn-primary">有効</button><br><br>
+
+<a href="http://3loc.tmsmusic.tokyo/shop/adm/hid">hid</a>
+
+<form method="get" action="/shop/adm/hid">
+<input type="hidden" name="pid" value="<%= selqr.pid %>">
+<button type="submit"  class="btn btn-danger">
+無効
+</button>
+</form>
+にしますか？
+
+<% } else { %>
+
+<button type="button" class="btn btn-primary">非アクティブ</button>
+<% } %>
+<br>
+<br>
+
+</div><!-- col2-->
+
+<% } else { %>
+
+please log in.
+
+<% } %>
+
+</div><!-- col10-->
+
+
+</div><!--row-->
+</div><!-- /container -->
+
+</body>
+

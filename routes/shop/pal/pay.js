@@ -10,7 +10,7 @@ var mypal = pal.myPal()
 
 var tran=mypal.transactions[0]
 
-var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [],skua=[]
+var tmp_a = [],  mer_a = [],  sum_a = [],  uni_s = [],  pri_s = [],skua=[],skumer=[]
 var email, usr, mer, sum, add,ite
 var mailtmp,mailusr
 
@@ -42,12 +42,20 @@ tmp_a.push(mailtmp[i])
 } else {        console.log("no mail")    }
 next()}
 
+
 var putMer = function(req, res, next) {
     mer_a = []
+    skumer=[]
     tran.item_list.items = []
+//skumer=db.skuPre(401)
     if (tmp_a) {
         for (var i = 0; i < tmp_a.length; i++) {
-            mer_a.push(db.skuMer(tmp_a[i].sku))
+        console.log(tmp_a[i].sku)
+try{
+skumer=db.skuPre(tmp_a[i].sku)
+}catch(err){console.log(err)}
+
+            mer_a.push(skumer)
             uni_s[i] = tmp_a[i].uni.toString()
             pri_s[i] = mer_a[i].pri.toString()
             skua[i] = mer_a[i].sku.toString()
@@ -60,59 +68,53 @@ var putMer = function(req, res, next) {
                 currency: "JPY",
             }
             tran.item_list.items.push(ite)
-        }
+        }//for
     } else {        console.log("no tmp_a")    }
-    next()}
+next()}
 
 
-var chkSh= function(req, res, next) {
+// var chkSh= function(req, res, next) {
 
-boa=[]
-for(var i=0;i<skua.length;i++){
+// boa=[]
+// for(var i=0;i<skua.length;i++){
 
-console.log("=== chk dl ===")
-var pat=/^\d{3}$/;
-var test=pat.test(skua[i])
-boa.push(test)
-}
+// console.log("=== chk dl ===")
+// var pat=/^\d{3}$/;
+// var test=pat.test(skua[i])
+// boa.push(test)
+// }
 
-console.log(skua)
-console.log(boa)
-ind=boa.indexOf(true)
+// console.log(skua)
+// console.log(boa)
+// ind=boa.indexOf(true)
 
-next()};
+// next()};
 
 // === sum ===
 var getSum = function(req, res, next) {
     sum_a = []
     for (var i = 0; i < tmp_a.length; i++) {
-        sum_a.push(mer_a[i].pri * tmp_a[i].uni)
+    sum_a.push(mer_a[i].pri * tmp_a[i].uni)
     }
     if (sum_a.length !== 0) {
 
         sub= sum_a.reduce(function(tot, cur) {
             return tot + cur
         })
-var ship=null
-if(ind==0){ship=650}
         ssub=sub.toString()
 var itax=Math.round(sub*0.08)
 var add=sub+itax
 var sadd=add.toString()
         // ship
-var ship=null
-if(ind!==-1){ship=650}
-else{ship=0}
 
-        var sship=ship.toString()
-        var sum=add+ship
-        var ssum=sum.toString()
+        //var sship=ship.toString()
+        var ssum=add.toString()
         console.log("=== amount===")
         console.log(tran)
         console.log(tran.item_list.items)
         tran.amount.details.subtotal =sub
         tran.amount.details.tax=itax
-        tran.amount.details.shipping=ship
+        tran.amount.details.shipping=0
         tran.amount.total =sum
 }
     next()}
@@ -121,7 +123,9 @@ else{ship=0}
 
 var chk = function(req, res, next) {
     console.log("=== pay ===")
-    console.log(email)
+    console.log(mailtmp)
+    console.log(tmp_a[0].sku)
+    console.log(skumer)
     next()}
 
 var goPal = function(req, res) {
@@ -151,10 +155,9 @@ var rcb = function(req, res) {
 }
 
 router.get("/shop/paypal/pay",
-[getEma,getUsr,putMer,putTmp,putMer,chkSh,getSum,
-//[    getEma,getUsr,putTmp,
-    chk,goPal
-//chk,rcb
+//[getEma,getUsr,putTmp,putMer,getSum,
+[getEma,getUsr,putTmp,putMer,getSum,
+chk,rcb
 ])
 
 module.exports = router

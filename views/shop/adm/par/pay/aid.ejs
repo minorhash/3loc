@@ -1,0 +1,32 @@
+<h4><span class="label label-danger">paidy</span></h4>
+<br>
+
+<%if(allpid && allpid.length!==0){%>
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<div class="row">
+
+<%for(var i=0;i<allpid.length;i++){%>
+
+<div class="well col-md-10">
+<font color="red">
+<b><u>&nbsp;&nbsp;&nbsp;&nbsp;購入日時：
+<%=allpid[i].date%></u></b><br>
+</font>
+<u>&nbsp;&nbsp;&nbsp;&nbsp;注文番号：
+<form method="post" action="/shop/qr-<%= allpid[i].pid %> ">
+<input type="hidden" value="<%=allpid[i].pid%>" name="pid">
+
+<button><%= allpid[i].pid %></button>
+</form>
+
+</u><br>
+</div><!-- col10-->
+
+
+<%}%>
+</div><!-- col2-->
+<%} else {%> paidyでの購入はありません <%}%>
+</div><!-- cont-->
+
+

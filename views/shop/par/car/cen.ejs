@@ -1,6 +1,7 @@
 <div class="container-fluid">
 <div class="row">
 <br>
+<%if(seltmp) { %>
 <%if(seltmp && mer.length!==0){%>
 <div class="col-md-8">
 <% include ./img %>
@@ -20,9 +21,8 @@
 
 <% include ./pay %>
 
-
-
 <%}else{%>カートは空です。<%}%>
+<%}else{%>no seltmp<%}%>
 </div>
 
 </div>

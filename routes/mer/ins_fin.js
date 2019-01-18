@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var email, usr, tit, sku, pri, img, bool, myerr, mailusr;
+var email, usr, tit, sku, pri, col, bool, myerr, mailusr;
 // === db ===
 var db = require('cardb');
 var adb = require('usrdb');
@@ -37,20 +37,18 @@ var getBod = function(req, res, next) {
     tit = req.body.tit;
     sku = req.body.sku;
     pri = req.body.pri;
-    img = 'img/cd/' + sku + '.png';
-    rel = req.body.rel;
+    size = req.body.size;
+    col = req.body.col;
     cat = req.body.cat;
     des = req.body.des;
-    song = null;
   } else {
     console.log('no body');
   }
-  next();
-};
+  next();};
 
 var putMer = function(req, res, next) {
   try {
-    db.insMer(tit, sku, pri, img, rel, cat, des, song);
+    db.insPre(tit, sku, pri,size, col, cat, des);
   } catch (err) {
     console.log(err);
   }
@@ -67,7 +65,8 @@ var rcb = function(req, res, next) {
     title: 'fin',
     tit: tit,
     sku: sku,
-    img: img,
+    pri: pri,
+    col: col,
   });
 };
 

@@ -11,7 +11,7 @@ var snde = require('snd-ema');
 var email, dat, pid, str, mai, mnt, usr, sku;
 var mailusr;
 var inspid, getpid, selpid, strbuy, strite;
-var buy, ite, oite,gpid
+var buy, ite, oite
 
 var cnf=require("../son/aid.json")
 //var sec=cnf.sec;
@@ -31,6 +31,7 @@ else{usr=null;console.log("no usr")}
 }else{console.log("no pss")}
 next()};
 
+// === put pid =============================
 var putPid = function(req, res, next) {
 //res.redirect("pid")
 
@@ -41,32 +42,68 @@ if (req.body && email) {
 pid = req.body.id;
 
 age
-.get('https://api.paidy.com/tokens/'+pid)
+.get('https://api.paidy.com/payments/'+pid)
 .set("Content-Type", "application/json")
 .set("Paidy-Version", "2018-04-10")
 .set("Authorization", "Bearer"+sec)
 .then(res => {
-    //console.log(res.body.buyer);
+try{
 adb.insPid(email,pid,res.body.amount,
 JSON.stringify(res.body.buyer),
 JSON.stringify(res.body.order.items),
 utc);
+}catch(err){console.log(err)}
 
 })
 
 } else {
 //var    pid = 'pay_Wz8zdysAAF0AirLI'
 console.log("no pid");  }
+
 next()};
 
-var getPid= function(req, res, next) {
-//gpid=adb.pidPid(pid)
+var getAid= function(req, res, next) {
+console.log("=== getpid ===")
 
-console.log(pid)
-console.log(ite)
-//ite=gpid.ite
+try{
+getpid=adb.getPid(pid)
+}catch(err){console.log(err)}
+
+console.log(getpid)
+//ite=getpid.ite
 //oite=JSON.parse(ite)
+
 next()};
+
+var insQR= function(req, res, next) {
+//var json=JSON.stringify(getpid)
+console.log("=== ins QR ===")
+if(getpid){
+name=JSON.parse(getpid.buy)
+ite=JSON.parse(getpid.ite)
+
+var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
+var arr=[]
+
+for(var i=0;i<ite.length;i++){
+arr+=
+"商品名:"+ite[i].title+", 個数:"+ite[i].quantity
+}
+var fin=str+arr
+
+var QRCode = require('qrcode')
+QRCode.toDataURL(fin, function (err, url) {
+try{
+adb.insQR(getpid.pid,url,0)
+}catch(err){
+console.log(err.name)
+literr=err.message.substring(0,6)
+}
+})
+}else{
+console.log("=== no getpid ===")
+}
+next()}
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
@@ -116,13 +153,16 @@ i18.ship1+i18.ship2+i18.ship3
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
 
+//var cod=
+
 var fin=mes+loo+msum+ship
 
-try{
+if(pid){
 snde.trEma(email,sub,fin);
-}catch(err){console.log(err)}
+}else{console.log("no pid")}
 
 })
+
 
 next()};
 
@@ -130,12 +170,12 @@ var chk = function(req, res, next) {
   console.log('=== PID =======================================');
   console.log(email);
   console.log(pid);
+  console.log(getpid);
   console.log('=== PID =======================================');
 };
 
-var fun=
-[getEma, getUsr,putPid,senEma,
-chk]
-router.put('/shop/aid/fan',fun);
+var fun=[getEma, getUsr,putPid,
+senEma,chk]
+router.put('/shop/aid/pid',fun);
 
-module.exports = router;
+    module.exports = router;

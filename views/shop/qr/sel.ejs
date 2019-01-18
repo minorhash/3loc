@@ -15,28 +15,8 @@
 
 <div class="box90">QR CODE</div><!-- box90-->
 
-<button onclick="func()" class="btn btn-danger">
-無効
-</button>
-
-<p id="demo"></p>
-<script>
-function func() {
-document.getElementById("demo").innerHTML = "Hello World";
-
-var loc= "http://localhost:3027";
-var xhr = new XMLHttpRequest();
-xhr.open("post", loc+"/shop/qr/hid", true);
-xhr.setRequestHeader('Content-Type', 'application/json');
-xhr.send();
-
-}
-
-</script>
-
-
 <% if(usr){ %>
-注文番号をえらんでQRコードをせいさくしてください。
+注文番号を選んでQRコードをえらんでください。
 <% include par/qr/main %>
 <% } else { %>
 please log in.

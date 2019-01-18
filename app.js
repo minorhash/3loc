@@ -64,7 +64,7 @@ app.use('/', ite)
 })
 
 // === qr ===
-var aqr=["sel","cr","dl","hid"]
+var aqr=["sel","dl"]
 
 for(var i=0;i<aqr.length;i++){
 aqr[i]=require('./routes/shop/qr/'+aqr[i]);
@@ -89,7 +89,7 @@ app.use('/', anot[i]);
 
 // === paidy ===
 
-var aaid=["paidy","pid","fan"]
+var aaid=["paidy","pid"]
 for(var i=0;i<aaid.length;i++){
 aaid[i]=require('./routes/shop/aid/'+aaid[i]);
 app.use('/', aaid[i]);

@@ -12,12 +12,11 @@ var delMer = function(req, res, next) {
   bod = req.body;
   sku = bod.sku;
   try {
-    db.delMer(sku);
+    db.delPre(sku);
   } catch (err) {
     console.log(err);
   }
-  next();
-};
+  next();};
 
 var getEma = function(req, res, next) {
   if (req.session) {
@@ -26,8 +25,7 @@ var getEma = function(req, res, next) {
     email = null;
     console.log('no sess');
   }
-  next();
-}; //getEma
+  next();}; //getEma
 
 var getUsr = function(req, res, next) {
   if (email) {
@@ -41,14 +39,12 @@ var getUsr = function(req, res, next) {
     usr = null;
     console.log('no email');
   }
-  next();
-}; //getUsr
+  next();}; //getUsr
 
 var chk = function(req, res, next) {
   console.log(sku);
 
-  next();
-};
+  next();};
 
 var rcb = function(req, res, next) {
   res.render('mer/del_fin', {

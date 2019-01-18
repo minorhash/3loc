@@ -61,12 +61,6 @@ age
 //console.log(res.body.order.shipping)
 })
 
-// var QRCode = require('qrcode')
-
-// QRCode.toDataURL(allpid[i].pid, function (err, url) {
-// adb.insQR(allpid[i].pid,url)
-// })
-
 }//for
 
 

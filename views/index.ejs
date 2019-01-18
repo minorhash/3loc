@@ -1,30 +1,63 @@
 <!DOCTYPE html>
 <html>
-<% include par/head%>
-<body>
-<!-- menu -->
+<%include par/head %>
+<%include par/nav%>
 
-<% include par/nav%>
-<!-- menu -->
+<body>
 
 <div class="container-fluid">
 <div class="row">
 
-<div class="col-sm-12" style="background-color:white">
-<div align="center">
+<div class="col" style="background-color:white">
+<div class="card">
 
-<br>
+<div class="card-header" align="center">
 
-</div><!-- /center-->
-</div><!-- /col12-->
-</div><!-- /row-->
+    <%= par %>
+</div><!-- head-->
+<div class="card-body" align="center" style="background:pink">
 
-<div class="footer"><% include par/foot %></div>
+<div id="demo" class="carousel slide" data-ride="carousel" 
+    data-interval="1000">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+        <% for(var i=1;i<4;i++){ %>
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="<%= i %>"></li>
+    <% } %>
+  </ul>
+
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+
+<div class="carousel-item active">
+<a href="page-profile"><img src="<%= iarr[0].replace(/public\//,"") %>" alt="img" height="500"></a>
+</div>
+<% for(var i=1;i<4;i++){ %>
+<div class="carousel-item">
+<img src="<%= iarr[i].replace(/public\//,"") %>" alt="Chicago" height="500">
+</div>
+<% } %>
 
 </div>
-</div>
-</div><!-- /container-fluid-->
 
+  <!-- Left and right controls -->
+<a class="carousel-control-prev" href="#demo" data-slide="prev">
+<span class="carousel-control-prev-icon"></span>
+</a>
+<a class="carousel-control-next" href="#demo" data-slide="next">
+<span class="carousel-control-next-icon"></span>
+</a>
+
+</div><!-- car-->
+
+
+  </div><!-- body-->
+
+   </div><!-- card-->
+
+</div><!-- row end -->
+</div>
 </body>
 </html>
-

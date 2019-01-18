@@ -22,16 +22,25 @@
 <% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
 <div class="well">
 
+<<<<<<< HEAD
 <% if(selqr) { %>
 
 クリックしてQR コードをダウンロードしてください。<br>
+=======
+<% if(selqr){ %>
+
+クリックしてQR コードをダウンロードしてください。
+>>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
 pid:<%= selqr.pid %><br>
 <a href="<%= selqr.qr %>" download>
 <img src="<%= selqr.qr %>">
 </a>
 <% } else { %>
 qrコードがありません。
+<<<<<<< HEAD
 商品の受渡しが終了していらっしゃるようです。
+=======
+>>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
 <% } %>
 </div><!-- well-->
 

@@ -16,7 +16,9 @@
 <div class="box90">QR CODE</div><!-- box90-->
 
 <% if(usr){ %>
-注文番号を選んでQRコードをえらんでください。
+
+<% if(usr){ %>
+注文番号を選んでQRコードを作成してください。
 <% include par/qr/main %>
 <% } else { %>
 please log in.
@@ -25,6 +27,6 @@ please log in.
 
 
 </div><!--row-->
-</div><!-- /container -->
+</div><!-- container -->
 </body>
 

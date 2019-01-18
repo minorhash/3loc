@@ -11,7 +11,7 @@ var email, usr,pid
 var selpid, allpid,allnow,allpal,selqr,getpid
 var ite, oite,opal,ship
 var jpal=[],opal=[]
-var literr,name,ite,host
+var literr,name,ite,host,boo
 
 var cred = require("./js/cred")
 // === get ============================
@@ -62,20 +62,34 @@ var setPid= function(req, res, next) {
 //pid=req.params.id
 pid="pay_XEGthUsAAEsAsrsa"
 //pid="pay_XAjslFYAAGEAiXdP"
-if(pid){
+var pat1=/pay/g
+    boo=pat1.test(pid)
+    if(boo===true){
 getpid=adb.getPid(pid)
-}else{console.log("no pid")}
+}else{
+getpid=adb.idPal(pid)
+console.log("no pid")}
 
 next()}
 
+var delQR = function(req, res, next) {
+
+if(boo===true){
+try{adb.delQR(pid)}
+catch(err){console.log(err)}
+}else{
+try{adb.pdelQR(pid)}
+catch(err){console.log(err)}
+
+    console.log("no pid")}
+
+next()}
 //  sel qr
 var selQR= function(req, res, next) {
 
 if(pid){
 
-try{
-selqr=adb.selQR(pid)
-}catch(err){console.log(err)}
+try{selqr=adb.selQR(pid)}catch(err){console.log(err)}
 
 if(selqr){
 console.log("===== pid:",selqr.pid)
@@ -88,6 +102,9 @@ next()}
 // chk
 var chk = function(req, res, next) {
 host = url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl,
 protocol: req.protocol,
 host: req.get('host'),
 pathname: req.originalUrl,
@@ -96,6 +113,7 @@ pathname: req.originalUrl,
 console.log("=== chk =====================")
 console.log(pid)
 console.log(email)
+console.log(getpid)
 // if(selqr){
 // console.log(selqr)
 // }else{console.log("no sel qr")}
@@ -114,7 +132,6 @@ allpal:allpal,selqr:selqr,
 literr:literr
 })
 
-//res.redirect("/shop/qr-"+pid)
 }
 
 //router.put("/shop/adm/dl", [getEma, getUsr, setPid,allPid, allPal,selQR,
@@ -124,6 +141,7 @@ router.post("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
 chk, gcb])
 
 router.get("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+//router.all("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
 chk, gcb])
 
 module.exports = router

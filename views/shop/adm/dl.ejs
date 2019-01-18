@@ -21,6 +21,7 @@
 <% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
 <% if(selqr){ %>
 
+<<<<<<< HEAD
 注文番号:<%= selqr.pid %><br>
 
 <% var arr=JSON.parse(getpid.ite) %>
@@ -39,6 +40,18 @@
 <% } else { %> ログインしてください。<% } %>
 
 </div><!-- col6-->
+=======
+クリックQR コードをダウンロードしてください。
+pid:<%= selqr.pid %><br>
+<a href="<%= selqr.qr %>" download>
+<img src="<%= selqr.qr %>">
+</a>
+<% } else { %> no qr <% } %>
+<% } else { %> no usr <% } %>
+
+</div><!-- col6-->
+
+>>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
 
 <div class="well col-md-6" style="color:black">
 
@@ -75,6 +88,10 @@
 
 please log in.
 
+<<<<<<< HEAD
+=======
+no usr
+>>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
 <% } %>
 
 </div><!-- col10-->

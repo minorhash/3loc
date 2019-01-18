@@ -66,6 +66,13 @@ pid=req.params.id
 if(boo===true){
 getpid=adb.getPid(pid)
 }else{
+<<<<<<< HEAD
+=======
+
+getpid=adb.idPal(pid)
+
+    console.log("no pid")}
+>>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
 
 getpid=adb.idPal(pid)
 
@@ -108,6 +115,9 @@ var str="をクリックしてください。"
 var url="localhost:3027"
 var link="<a href=\"http://"+url+"/shop/qr/dl-"+pid+"\">"+"リンク"+"</a>"+str
 var sub="QRコードをお送りしました"
+    var str="をクリックしてください。"
+var link="<a href=\"http://3loc.tmsmusic.tokyo/shop/adm/dl-"+pid+"\">"+"リンク"+"</a>"
+
 
 try{
 var tr=snde.trEma(email,sub,link)
@@ -115,6 +125,7 @@ console.log(typeof tr)
 }catch(err){console.log(err)}
 
 }else { console.log("no selqr")}
+
 
 next()}
 

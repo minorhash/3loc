@@ -42,7 +42,7 @@ var putMer = function(req, res, next) {
     mer=[]
     if (mailtmp) {
         for (var i = 0; i < mailtmp.length; i++) {
-            mer[i] = db.skuMer(mailtmp[i].sku)
+            mer[i] = db.skuPre(mailtmp[i].sku)
         }
     } else {console.log("no mailtmp")    }
     next()}

@@ -17,16 +17,45 @@
 <br>
 
 <% if(usr) { %>
+<<<<<<< HEAD
 <div class="well col-md-12" style="color:black">
 
 <% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
 クリックしてQR コードをダウンロードしてください。
 <div class="well">
 <% if(selqr){ %>
+=======
+<div class="well col-md-6" style="color:black">
+<% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
+<% if(selqr){ %>
+
+<<<<<<< HEAD
+注文番号:<%= selqr.pid %><br>
+
+<% var arr=JSON.parse(getpid.ite) %>
+<% for(var i=0;i<arr.length;i++){ %>
+
+<div class="well">
+品番:<%= arr[i].id %><br>
+名前:<%= arr[i].title %><br>
+数量:<%= arr[i].quantity %><br>
+
+</div>
+<% } %>
+
+</a>
+<% } else { %> no qr <% } %>
+<% } else { %> ログインしてください。<% } %>
+
+</div><!-- col6-->
+=======
+クリックQR コードをダウンロードしてください。
+>>>>>>> 6361efc35b701fe57e41fe670a37cfedb7f6f05f
 pid:<%= selqr.pid %><br>
 <a href="<%= selqr.qr %>" download>
 <img src="<%= selqr.qr %>">
 </a>
+<<<<<<< HEAD
 <% } else { %>
 no qr
 <% } %>
@@ -35,6 +64,54 @@ no qr
 </div><!-- col12-->
 <% } else { %>
 no usr
+=======
+<% } else { %> no qr <% } %>
+<% } else { %> no usr <% } %>
+
+</div><!-- col6-->
+
+>>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
+
+<div class="well col-md-6" style="color:black">
+
+<% if(selqr){ %>
+
+<button class="btn btn-info"><%= selqr.pid %></button>
+
+<form method="get" action="/shop/adm/hid">
+
+ステータス:
+<% if(selqr.act===0){ %>
+
+<button  class="btn btn-primary">有効</button><br><br>
+
+<form method="post" action="/shop/adm/hid">
+<input type="hidden" name="pid" value="<%= selqr.pid %>">
+<button type="submit"  class="btn btn-danger">
+無効
+</button>
+にしますか？
+</form>
+
+<% } else { %>
+
+<button type="button" class="btn btn-primary">非アクティブ</button>
+
+<% } %>
+<br>
+<br>
+
+</div><!-- col2-->
+
+<% } else { %>
+
+please log in.
+
+<<<<<<< HEAD
+=======
+no usr
+>>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
+>>>>>>> 6361efc35b701fe57e41fe670a37cfedb7f6f05f
 <% } %>
 
 </div><!-- col10-->

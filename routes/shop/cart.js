@@ -182,13 +182,11 @@ var putAid = function(req, res, next) {
 
 
 var pcb = function(req, res, next) {
-  res.render("shop/cart", {
-      seltmp: mailtmp,    sum: sum,tsum:tsum,    mer: mer,    usr: usr,cnf:cnf,
-    email: email
-  }); //rend
+res.render("shop/cart", {
+seltmp: mailtmp,sum: sum,tsum:tsum,mer: mer,usr: usr,cnf:cnf,
+email: email
+}); //rend
 };
-
-
 
 router.post("/shop/cart", [
   getEma,  getUsr,  getTmp,  getIte,  getSku, insUpd,  clrEma,

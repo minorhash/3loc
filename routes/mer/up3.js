@@ -13,11 +13,11 @@ var bod, name, pri, img, rel, cat, des;
 // === post
 
 var getEma = function(req, res, next) {
-  if (req.session) {
-    email = req.session.email;
-  } else {
-    email = null;
-    console.log('no sess');
+if (req.session) {
+email = req.session.email;
+} else {
+email = null;
+console.log('no sess');
   }
   next()}; //getEma
 
@@ -39,7 +39,7 @@ var putBod = function(req, res, next) {
   sku = bod.sku;
   name = bod.name;
   pri = bod.pri;
-  rel = bod.rel;
+  col = bod.col;
   cat = bod.cat;
   des = bod.des;
   song = bod.song;
@@ -49,31 +49,29 @@ var putBod = function(req, res, next) {
 
 var putMer = function(req, res, next) {
   try {
-    db.namMer(name, sku);
-    db.priMer(pri, sku);
-    db.relMer(rel, sku);
-    db.catMer(cat, sku);
-    db.desMer(des, sku);
-    db.songMer(song, sku);
+    db.namPre(name, sku);
+    db.priPre(pri, sku);
+    db.colPre(col, sku);
+    db.catPre(cat, sku);
+    db.desPre(des, sku);
   } catch (err) {
     console.log(err)}
 
   next()};
 
 var getMer = function(req, res, next) {
-try {    skumer = db.skuMer(sku);  }
+try {    skumer = db.skuPre(sku);  }
 catch (err) {    console.log(err);  }
 next()}; //getMer
 
 var chk = function(req, res, next) {
+  console.log("=== chk ===");
   console.log(email);
   console.log(usr);
   console.log(name);
   console.log(pri);
-  console.log(song);
   console.log(skumer);
   console.log(bod);
-  console.log(sku);
   next()};
 
 var rcb = function(req, res, next) {
@@ -83,9 +81,9 @@ var rcb = function(req, res, next) {
       usr: usr,
       bod: bod,
       skumer: skumer
-  });
+});
 };
 
 router.post('/mer/up3', [getEma, getUsr, putBod, putMer, getMer,
-    chk, rcb]);
+chk, rcb]);
 module.exports = router;

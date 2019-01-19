@@ -32,7 +32,7 @@
     <h5>カテゴリー:<%=mer.cat%></h5>
     <h5>価格:<%=mer.pri.toLocaleString() %> &nbsp;円</h5><br>
     <div class="box90">商品紹介</div><br>
-<div class="well"><%=mer.sku%></div>
+<div class="well"><%=mer.des %></div>
 
 <form method="get" action="/shop">
 <button type="submit">ショップに戻る</button>
@@ -49,7 +49,7 @@
 
 <br>
 <form action="/shop/cart" method="post">
-<input type="hidden" name="sku" value=<%=mer.sku%>>
+<input type="hidden" name="sku" value="<%=mer.sku%>">
 数量:
 <input id="number" type="number" name="uni" value="1" min="0" step="1"><br><br>
 &nbsp;&nbsp;

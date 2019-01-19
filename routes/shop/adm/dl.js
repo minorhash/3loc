@@ -11,7 +11,11 @@ var email, usr,pid
 var selpid, allpid,allnow,allpal,selqr,getpid
 var ite, oite,opal,ship
 var jpal=[],opal=[]
+<<<<<<< HEAD
 var literr,name,ite,host
+=======
+var literr,name,ite,host,boo
+>>>>>>> 6361efc35b701fe57e41fe670a37cfedb7f6f05f
 
 var cred = require("./js/cred")
 // === get ============================
@@ -58,6 +62,7 @@ next()}
 
 //  getpid
 var setPid= function(req, res, next) {
+<<<<<<< HEAD
 pid=req.body.pid
 //pid="pay_XAjslFYAAGEAiXdP"
 if(pid){
@@ -118,6 +123,46 @@ var snde = require('snd-ema');
 
 }else { console.log("no selqr")}
 }else { console.log("no allpid")}
+=======
+//pid=req.body.pid
+//pid=req.params.id
+pid="pay_XEGthUsAAEsAsrsa"
+//pid="pay_XAjslFYAAGEAiXdP"
+var pat1=/pay/g
+    boo=pat1.test(pid)
+    if(boo===true){
+getpid=adb.getPid(pid)
+}else{
+getpid=adb.idPal(pid)
+console.log("no pid")}
+
+next()}
+
+var delQR = function(req, res, next) {
+
+if(boo===true){
+try{adb.delQR(pid)}
+catch(err){console.log(err)}
+}else{
+try{adb.pdelQR(pid)}
+catch(err){console.log(err)}
+
+    console.log("no pid")}
+
+next()}
+//  sel qr
+var selQR= function(req, res, next) {
+
+if(pid){
+
+try{selqr=adb.selQR(pid)}catch(err){console.log(err)}
+
+if(selqr){
+console.log("===== pid:",selqr.pid)
+
+}else { console.log("no selqr")}
+}else { console.log("no pid")}
+>>>>>>> 6361efc35b701fe57e41fe670a37cfedb7f6f05f
 
 next()}
 
@@ -127,11 +172,21 @@ host = url.format({
     protocol: req.protocol,
     host: req.get('host'),
     pathname: req.originalUrl,
+<<<<<<< HEAD
+=======
+protocol: req.protocol,
+host: req.get('host'),
+pathname: req.originalUrl,
+>>>>>>> 6361efc35b701fe57e41fe670a37cfedb7f6f05f
 });
 
 console.log("=== chk =====================")
 console.log(pid)
 console.log(email)
+<<<<<<< HEAD
+=======
+console.log(getpid)
+>>>>>>> 6361efc35b701fe57e41fe670a37cfedb7f6f05f
 // if(selqr){
 // console.log(selqr)
 // }else{console.log("no sel qr")}
@@ -141,6 +196,7 @@ console.log("=== oite =====")
 console.log(host)
 next()}
 
+<<<<<<< HEAD
 var reqPut= function(req, res,next) {
 var req=require("request")
 var arr=[getEma, getUsr, setPid,allPid, allPal,insQR,chk]
@@ -154,6 +210,10 @@ next()}
 
 var gcb = function(req, res) {
 res.render("shop/qr/dl", {
+=======
+var gcb = function(req, res) {
+res.render("shop/adm/dl", {
+>>>>>>> 6361efc35b701fe57e41fe670a37cfedb7f6f05f
 title: "qr code", usr: usr, selpid: selpid,pid:pid,
 allpid: allpid, allnow: allnow,
 oite: oite,opal:opal,
@@ -161,6 +221,7 @@ allpal:allpal,selqr:selqr,
 literr:literr
 })
 
+<<<<<<< HEAD
 //res.redirect("/shop/qr-"+pid)
 }
 
@@ -170,6 +231,18 @@ router.post("/shop/qr/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
 chk, gcb])
 
 router.get("/shop/qr/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+=======
+}
+
+//router.put("/shop/adm/dl", [getEma, getUsr, setPid,allPid, allPal,selQR,
+//chk])
+
+router.post("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+chk, gcb])
+
+router.get("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+//router.all("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+>>>>>>> 6361efc35b701fe57e41fe670a37cfedb7f6f05f
 chk, gcb])
 
 module.exports = router

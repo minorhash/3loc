@@ -33,7 +33,8 @@
 <form action="/mer/item<%=mer[i].sku%>" method="post">
 <input type="hidden" name="sku" value="<%=mer[i].sku%>">
 <div align="center">
-<input type="image" src="../<%=mer[i].img%>" height="240" alt="img">
+
+<input type="image" src="../img/pre/<%= mer[i].sku %>.png" height="240" alt="img">
 </div>
 <div class="style27"><%=mer[i].name%><br>
 TMS-<%=mer[i].sku%></div>

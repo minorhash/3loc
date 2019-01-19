@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -64,7 +64,7 @@ app.use('/', ite)
 })
 
 // === qr ===
-var aqr=["sel","cr","dl"]
+var aqr=["sel","dl"]
 
 for(var i=0;i<aqr.length;i++){
 aqr[i]=require('./routes/shop/qr/'+aqr[i]);
@@ -72,9 +72,10 @@ app.use('/', aqr[i]);
 }
 
 // === adm ===
-var aadm=["sel","cr","dl"]
+var aadm=["dl","hid"]
 
-for(var i=0;i<aqr.length;i++){
+for(var i=0;i<aadm.length;i++){
+
 aadm[i]=require('./routes/shop/adm/'+aadm[i]);
 app.use('/', aadm[i]);
 }
@@ -89,7 +90,7 @@ app.use('/', anot[i]);
 
 // === paidy ===
 
-var aaid=["paidy","pid","fan"]
+var aaid=["paidy","pid"]
 for(var i=0;i<aaid.length;i++){
 aaid[i]=require('./routes/shop/aid/'+aaid[i]);
 app.use('/', aaid[i]);

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<% include par/head %>
+<% include par/nav %>
+<body>
+
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-md-2" style="color:black">
+<% include par/left %>
+</div><!-- col2-->
+
+<div class="col-md-10" style="color:black">
+<div class="box90"><%= title %></div><!-- box90-->
+<br>
+
+<% if(usr) { %>
+<div class="well col-md-6" style="color:black">
+<% if(literr){ %> err:<p class="label label-default"> <%= literr %></p><%} %>
+クリックQR コードをダウンロードしてください。
+<div class="well">
+<% if(selqr){ %>
+pid:<%= selqr.pid %><br>
+<a href="<%= selqr.qr %>" download>
+<img src="<%= selqr.qr %>">
+</a>
+<% } else { %>
+no qr
+<% } %>
+</div><!-- well-->
+
+</div><!-- col12-->
+
+<div class="well col-md-6" style="color:black">
+col2<br>
+
+pid:<%= selqr.pid %><br>
+ステータス:
+<% if(selqr.act===0){ %>
+
+<button  class="btn btn-primary">有効</button><br><br>
+
+<form method="get" action="/shop/adm/hid">
+<input type="hidden" name="pid" value="<%= selqr.pid %>">
+<button type="submit"  class="btn btn-danger">
+無効
+</button>
+</form>
+にしますか？
+
+<p id="demo"></p>
+
+<script>
+function func() {
+
+var loc= "http://localhost:3027";
+var pid="<%= selqr.pid %>";
+var dat={pid:pid};
+var xhr = new XMLHttpRequest();
+xhr.open("get", loc+"/shop/adm/hid", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.send(JSON.stringify(dat));
+
+document.getElementById("demo").innerHTML = pid;
+
+}
+
+</script>
+
+<% } else { %>
+
+<button type="button" class="btn btn-primary">日アクティブ</button>
+<% } %>
+<br>
+<br>
+
+</div><!-- col2-->
+
+<% } else { %>
+no usr
+<% } %>
+
+</div><!-- col10-->
+
+
+</div><!--row-->
+</div><!-- /container -->
+
+</body>
+

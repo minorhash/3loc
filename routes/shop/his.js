@@ -47,11 +47,11 @@ console.log("=== no all pid ==================")
 }else{
 
 allpid= adb.allPid(email)
-console.log(cnf.skl)
+//console.log(cnf.skl)
 oite=[]
 for (var i = 0; i < allpid.length; i++) {
 oite.push(JSON.parse(allpid[i].ite))
-            console.log(allpid[i].pid)
+//            console.log(allpid[i].pid)
 age
 .get('https://api.paidy.com/payments/'+allpid[i].pid)
 .set("Content-Type", "application/json")
@@ -60,12 +60,6 @@ age
 .then(function(res){
 //console.log(res.body.order.shipping)
 })
-
-// var QRCode = require('qrcode')
-
-// QRCode.toDataURL(allpid[i].pid, function (err, url) {
-// adb.insQR(allpid[i].pid,url)
-// })
 
 }//for
 
@@ -99,8 +93,7 @@ age
 }
 
 })
-}
-
+}//for
 next()}
 
 var chkCap= function(req, res, next) {
@@ -139,10 +132,10 @@ var host = url.format({
     pathname: req.originalUrl,
 });
 console.log("=== chk =====================")
-console.log(allpal)
-console.log(opal)
+// console.log(allpal)
+// console.log(opal)
 console.log("=== oite =====")
-console.log(oite)
+//console.log(oite)
 console.log(host)
 next()}
 

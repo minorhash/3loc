@@ -26,7 +26,7 @@
     <br>注文id: <%= pid %><br>
 <%if(pid){%>
 <% for(var i=0;i<item.length;i++) {%>
-<img src="../../img/cd/<%=item[i].sku%>.png">
+<img src="../../img/pre/<%=item[i].sku%>.png">
 <br>タイトル: <%=item[i].name%>
 <br>品番: <%=item[i].sku%>
 <br>価格: <%= (item[i].price).toLocaleString() %><%= shop.yen %>

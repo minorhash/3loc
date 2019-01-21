@@ -24,9 +24,18 @@
 
 <div class="row">
 <%for (var j=0;j<opal[i].length;j++){%>
-
+<% var pat=/^3/ %>
+<% var boo=pat.test(opal[i][j].sku) %>
 <div valign="top" align="center" class="col-md-3">
-<img src="../img/cd/<%= opal[i][j].sku%>.png" width="150">
+
+<% if(boo==true) { %>
+<img src="../img/cd/<%= opal[i][j].sku%>.png" height="150">
+
+<% } else { %>
+<img src="../img/pre/<%= opal[i][j].sku%>.png" height="150">
+
+<% } %>
+
 </div>
 
 <div class="well col-md-7">

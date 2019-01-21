@@ -50,7 +50,6 @@ var host = url.format({
 
 console.log("=== chk =====================")
 console.log(email)
-console.log(req.param)
 console.log(req.query.pid)
 next()}
 

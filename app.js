@@ -7,6 +7,7 @@ var logger = require('morgan');
 //var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var i18n = require('i18n-express');
+//var i18n = require('i18n');
 var sess = require('cookie-session');
 //
 var app = express();
@@ -21,9 +22,10 @@ app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
-app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(logger('dev'));
+
 //app.use(cookieParser());
 
 app.use(
@@ -34,8 +36,7 @@ app.use(
   })
 );
 
-//app.use('/', shop);
-// i18n ======================================
+//express-i18n ======================================
 var nat=["","mail","shop","gis","usr"]
 
 for(let i=0;i<nat.length;i++){

@@ -59,6 +59,6 @@ rob = { title: 'item', usr: usr, mer: skumer, song: obj};
 res.render('shop/item', rob);
 }; //rcb
 
-router.post('/shop/item:id', [getEma, getUsr, getSku, getSon, chk, rcb]);
+router.post('/shop/item:id', [getEma, getUsr, getSku, chk, rcb]);
 
 module.exports = router;

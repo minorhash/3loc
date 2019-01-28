@@ -66,17 +66,14 @@ pid=req.params.id
 if(boo===true){
 getpid=adb.getPid(pid)
 }else{
-<<<<<<< HEAD
-=======
-
-getpid=adb.idPal(pid)
-
-    console.log("no pid")}
->>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
 
 getpid=adb.idPal(pid)
 
 console.log("no pid")}
+
+getpid=adb.idPal(pid)
+
+console.log("no pid")
 next()}
 
 var postPid= function(req, res, next) {

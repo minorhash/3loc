@@ -38,9 +38,8 @@ pid=req.query.pid
 // }
 // }else{console.log("no allpal")}
 
-// next()}
+next()}
 
-//  aid
 
 var posPid = function(req, res, next) {
 
@@ -70,12 +69,9 @@ var host = url.format({
 
 console.log("=== chk =====================")
 console.log(email)
-<<<<<<< HEAD
-=======
 console.log(pid)
 console.log(req.query)
 console.log(usr)
->>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 console.log(req.query.pid)
 console.log(pid)
 next()}

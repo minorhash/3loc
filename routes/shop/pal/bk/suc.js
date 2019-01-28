@@ -147,7 +147,6 @@ i18.title+item[i].name+"<br>"
 +i18.tax+(item[i].tax).toLocaleString()+i18.yen+"<br>"
 +i18.unit+item[i].quantity+"<br>"
 }
-
 var msum=i18.lin1+i18.sub+Math.round(sum*1.08).toLocaleString()+i18.yen+"<br>"
 +i18.sum+(Math.ceil(sum*1.08)).toLocaleString()+i18.yen+"<br>"
 
@@ -162,31 +161,6 @@ i18.ship1+i18.ship2+i18.ship3
 +i18.ship4+i18.ship5
 +i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
-
-
-var url="axell-shop.tmsmusic.tokyo"
-var str="金額:"+(res.body.amount).toLocaleString()+"円\n"
-var arr
-var lin="http://"+url+"/shop/adm/dl-"+pid
-
-var QRCode = require('qrcode')
-QRCode.toDataURL(fin, function (err, url) {
-try{
-adb.insQR(pid,url,0)
-}catch(err){
-console.log(err.name)
-literr=err.message.substring(0,6)
-}
-})
-
-var hand1=" <br><br>商品お渡しについて<br><br>2019年2月3日のワンマンライブ会場にて、商品のお渡しをさせて頂きます。<br>"
-var hand2="注文番号を<a href="+url+"/shop/qr/dl-"+pid+">クリック</a>して作成したQRコードを当日スタッフにご提示ください。<br>"
-var hand22="QRコードのリンクを別途メールでお送りしています。<br>"
-var hand3="商品の発送はございませんので、ご注意ください。<br>"
-var hand4="paypal決済につきましては、お引き渡し時に、"
-var hand5="ご入金確認が取れていない商品についてはお引渡しできません。<br>"
-
-var hand=hand1+hand2+hand22+hand3+hand4+hand5
 
 var fin=mes+loo+msum+hand+misc
 

@@ -8,7 +8,7 @@ var age=require("superagent")
 var cnf=require("./son/aid.json")
 // === glob ============================
 var email, usr
-var selpid, allpid,allnow,allpal,selqr
+var selpid, allpid,allnow,allpal,seladm
 var ite, oite,opal,ship
 var jpal=[],opal=[]
 var literr
@@ -69,9 +69,9 @@ var host = url.format({
 console.log("=== chk =====================")
 console.log(email)
 console.log(allpid[0])
-if(selqr){
-console.log(selqr)
-}else{console.log("no sel qr")}
+if(seladm){
+console.log(seladm)
+}else{console.log("no sel adm")}
 
 console.log("=== oite =====")
 //console.log(oite)
@@ -79,10 +79,10 @@ next()}
 
 var gcb = function(req, res) {
 res.render("shop/adm/sel", {
-title: "qr code", usr: usr, selpid: selpid,
+title: "adm code", usr: usr, selpid: selpid,
 allpid: allpid, allnow: allnow,
 oite: oite,opal:opal,
-allpal:allpal,selqr:selqr,
+allpal:allpal,seladm:seladm,
 literr:literr
 })
 }

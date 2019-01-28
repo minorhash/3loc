@@ -24,6 +24,7 @@
 
 <div class="row">
 <%for (var j=0;j<opal[i].length;j++){%>
+<<<<<<< HEAD
 <% var pat=/^3/ %>
 <% var boo=pat.test(opal[i][j].sku) %>
 <div valign="top" align="center" class="col-md-3">
@@ -37,6 +38,21 @@
 <% } %>
 
 </div>
+=======
+<!--  ============================================= -->
+<% var pat1=/^3/g %>
+<% var res=pat1.test(opal[i][j].sku) %>
+
+<div valign="top" align="center" class="col-md-3">
+<%= res %>
+<% if(res===false){ %>
+<img src="../img/pre/<%=opal[i][j].sku%>.png" width="150cm" height="150mm">
+<% } else {%>
+<img src="../img/cd/<%=opal[i][j].sku%>.png" width="150cm" height="150mm">
+<% } %>
+
+</div><!-- col3 -->
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 
 <div class="well col-md-7">
 <div class="note">

@@ -21,6 +21,12 @@ if(mailusr){usr=mailusr.name}
 else{usr=null;console.log("no usr")}
 next()};
 
+var posPid = function(req, res, next) {
+
+pid=req.query.pid
+    try{
+        adb.delQR(pid)
+    }catch(err){console.log(err)}
 // === pal
 // var allPal= function(req, res, next) {
 // opal=[]
@@ -35,9 +41,23 @@ next()};
 // next()}
 
 //  aid
+
 var posPid = function(req, res, next) {
 
 pid=req.query.pid
+next()}
+
+var delQR = function(req, res, next) {
+
+if(pid){
+try{adb.delQR(pid)}
+catch(err){console.log(err)}
+}else{console.log("no pid")}
+next()}
+
+var posPid = function(req, res, next) {
+
+pid=req.body.pid
 
 next()}
 
@@ -50,7 +70,14 @@ var host = url.format({
 
 console.log("=== chk =====================")
 console.log(email)
+<<<<<<< HEAD
+=======
+console.log(pid)
+console.log(req.query)
+console.log(usr)
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 console.log(req.query.pid)
+console.log(pid)
 next()}
 
 var gcb = function(req, res) {
@@ -59,8 +86,7 @@ title: "qr code", usr: usr, pid: pid
 })
 }
 
-router.all("/shop/adm/hid", [getEma, getUsr,posPid,
+router.all("/shop/adm/hid", [getEma, getUsr,posPid,delQR,
 chk, gcb])
-
 
 module.exports = router

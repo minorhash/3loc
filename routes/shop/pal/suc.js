@@ -42,9 +42,15 @@ var getTmp = function(req, res, next) {
 var putMer = function(req, res, next) {
     mer=[]
     if (mailtmp) {
+<<<<<<< HEAD
     for (var i = 0; i < mailtmp.length; i++) {
     mer[i] = db.skuPre(mailtmp[i].sku)
     }
+=======
+        for (var i = 0; i < mailtmp.length; i++) {
+            mer[i] = db.skuPre(mailtmp[i].sku)
+        }
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
     } else {console.log("no mailtmp")    }
     next()}
 

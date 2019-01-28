@@ -51,7 +51,11 @@ try{
 adb.insPid(email,pid,res.body.amount,
 JSON.stringify(res.body.buyer),
 JSON.stringify(res.body.order.items),
+<<<<<<< HEAD
 utc,0);
+=======
+utc);
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 }catch(err){console.log(err)}
 
 })
@@ -73,11 +77,18 @@ age
 oite=res.body.order.items
 ite=JSON.stringify(oite)
 
+<<<<<<< HEAD
 console.log(oite)
 console.log(ite)
 
 //var url="localhost:3027"
 var url="axell-shop.tmsmusic.tokyo"
+=======
+    console.log(oite)
+    console.log(ite)
+
+var url="localhost:3027"
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 var str="金額:"+(res.body.amount).toLocaleString()+"円\n"
 var arr
 var lin="http://"+url+"/shop/adm/dl-"+pid
@@ -97,6 +108,7 @@ console.log(err.name)
 literr=err.message.substring(0,6)
 }
 })
+<<<<<<< HEAD
 
 })//res
 
@@ -137,7 +149,11 @@ console.log(typeof tr)
 })//res
 
 next()}
+=======
+})//res
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 
+next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
@@ -176,6 +192,7 @@ i18.sku+oite[i].id+"<br>"
 +i18.lin1
 }
 
+<<<<<<< HEAD
 var msum=i18.sum+(res.body.amount).toLocaleString()+i18.yen+"<br>"
 
 var url="http://axell-shop.tmsmusic.tokyo"
@@ -195,6 +212,24 @@ i18.else1+i18.else2+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
 
 var fin=mes+loo+msum+hand+misc
+=======
+var msum=i18.sub+(res.body.amount).toLocaleString()+i18.yen+"<br>"
++i18.sum+(res.body.amount).toLocaleString()+"<br>"
+
+var hand=" 商品お渡しについて<br><br>2019年2月3日のワンマンライブ会場にて、商品のお渡しをさせて頂きます。<br>"
+
+var hand2="ちゅうもんばんごうを<a href='http://localhost:3027'>クリック</a>してできたQRコードを当日スタッフにご提示ください。<br>"
+var hand22="QRコードのリンクを別途メールでお送りしています。<br>"
+var hand3="商品の発送はございませんので、ご注意ください。<br>"
+var hand4="paypal決済につきましては、お引き渡し時に、ご入金確認が取れていない商品についてはお引渡しできません。<br>"
+
+//var ship= // i18.ship1+i18.ship2+i18.ship3 // +i18.ship4+i18.ship5
+var misc=
++i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
++i18.adr1+i18.adr2+i18.adr3
+
+var fin=mes+loo+msum+hand+hand2+hand22+hand3+hand4+misc
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 
 if(pid){
 snde.trEma(email,sub,fin);
@@ -211,7 +246,11 @@ var chk = function(req, res, next) {
   console.log('=== PID =======================================');
 };
 
+<<<<<<< HEAD
 var fun=[getEma, getUsr,putPid,insQR,senEma,selQR,
+=======
+var fun=[getEma, getUsr,putPid,insQR,senEma,
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 chk]
 router.put('/shop/aid/pid',fun);
 

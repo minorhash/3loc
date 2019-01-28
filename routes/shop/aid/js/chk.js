@@ -1,36 +1,57 @@
 var adb = require('usrdb');
 var age=require("superagent")
-// === cnf ===
-var cnf=require("../../son/cnf.json")
-var sec=cnf.sec
-//var sec=cnf.skl
-//var email="successful.payment@paidy.com"
+var cnf=require("../son/cnf.json")
+//var sec=cnf.sec
+var sec=cnf.skl
 var email="minorhash@gmail.com"
-
-// === pid ===
-
 var allpid=adb.allPid(email)
+console.log(allpid)
 
-for(var i=0;i<allpid.length;i++){
+// if(allpid.length!==0){
+// for(var i=0;i<allpid.length;i++){
 
-console.log(allpid[i].pid)
-age
-.get('https://api.paidy.com/payments/'+allpid[i].pid)
-.set("Content-Type", "application/json")
-.set("Paidy-Version", "2018-04-10")
-.set("Authorization", "Bearer"+sec)
-.then(res => {
-if(res.body.status=="closed"){
-console.log("already closed")
-}else{
-console.log("auth")
-console.log(res.body.id)
-// closed
+// age
+// .get('https://api.paidy.com/payments/'+allpid[i].pid)
+// .set("Content-Type", "application/json")
+// .set("Paidy-Version", "2018-04-10")
+// .set("Authorization", "Bearer"+sec)
+// .then(res => {
+// if(res.body.status=="closed"){
+// console.log("closed")
+// console.log(res.body.id)
+// }else{
+// console.log("auth")
+// console.log(res.body.id)
+// }
+// })
+// }
+// }else{console.log("no allpid")}
 
-}//else
+// var pay="pay_W9wFI1kAAFsAjO1O"
 
-})//then
+// age
+// .get('https://api.paidy.com/payments/'+pay)
+// .set("Content-Type", "application/json")
+// .set("Paidy-Version", "2018-04-10")
+// .set("Authorization", "Bearer"+sec)
+// .then(res => {
+// if(res.body.captures.length!==0){
+// console.log("cap")
+// console.log(res.body.captures)
+// }else{
+// console.log("cap arr:")
+// console.log(res.body.captures)
+// }
+// })
 
-}//for
-
+//var pay="pay_W8k-XUYAAKQAj38h"
+// var pay="pay_W8heHEYAAKQAjsHp"
+// age
+// .post('https://api.paidy.com/payments/'+pay+"/close")
+// .set("Content-Type", "application/json")
+// .set("Paidy-Version", "2018-04-10")
+// .set("Authorization", "Bearer"+sec)
+// .then(res => {
+// console.log(res.body.order.items)
+// })
 

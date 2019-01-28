@@ -97,8 +97,12 @@ var sadd=add.toString()
         tran.amount.details.subtotal =sub
         tran.amount.details.tax=itax
         tran.amount.details.shipping=0
+<<<<<<< HEAD
         tran.amount.total =sadd
         console.log(tran)
+=======
+        tran.amount.total =ssum
+>>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 }
     next()}
 

@@ -13,22 +13,20 @@ var getEma = function(req, res, next) {
   } else {
     console.log('no cookie');
   }
-  next();
-}; //getEma
+  next();}; //getEma
 
 var getSku = function(req, res, next) {
   sku = req.body.sku;
   if (sku) {
     try {
-      skumer = db.skuMer(sku);
+      skumer = db.skuPre(sku);
     } catch (err) {
       console.log(err);
     }
   } else {
     console.log('no sku');
   }
-  next();
-}; //getSku
+  next();}; //getSku
 
 var getUsr = function(req, res, next) {
   if (email) {
@@ -42,8 +40,7 @@ var getUsr = function(req, res, next) {
     usr = null;
     console.log('no email');
   }
-  next();
-};
+  next();};
 
 var getSon = function(req, res, next) {
   try {
@@ -58,14 +55,12 @@ var getSon = function(req, res, next) {
     obj = null;
     console.log('no skuson');
   }
-  next();
-};
+  next();};
 
 var chk = function(req, res, next) {
-  console.log(sku);
-  console.log(skuson);
-  next();
-};
+  console.log("=== chk ===");
+  console.log(skumer);
+  next();};
 
 // === rend
 var rcb = function(req, res) {
@@ -73,5 +68,5 @@ var rcb = function(req, res) {
   res.render('mer/item', rob);
 }; //rcb
 
-router.post('/mer/item:id', [getEma, getUsr, getSku, getSon, chk, rcb]);
+router.post('/mer/item:id', [getEma, getUsr, getSku,  chk, rcb]);
 module.exports = router;

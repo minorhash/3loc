@@ -57,42 +57,43 @@ oite.push(JSON.parse(allpid[i].ite))
 next()}
 
 //  getpid
-var setPid= function(req, res, next) {
+var getPid= function(req, res, next) {
 //pid=req.body.pid
 pid=req.params.id
+    var pat1=/pay/g
+    boo=pat1.test(pid)
 //pid="pay_XAjslFYAAGEAiXdP"
-if(pid){
+if(boo===true){
 getpid=adb.getPid(pid)
-}else{console.log("no pid")}
+}else{
+<<<<<<< HEAD
+=======
 
+getpid=adb.idPal(pid)
+
+    console.log("no pid")}
+>>>>>>> 2799973ef82b473015ec587bce6b88f2ee702b45
+
+getpid=adb.idPal(pid)
+
+console.log("no pid")}
 next()}
 
-//  ins qr
-var insQR= function(req, res, next) {
-var QRCode = require('qrcode')
-//var json=JSON.stringify(getpid)
+var postPid= function(req, res, next) {
+pid=req.body.pid
+//pid=req.params.id
+    var pat1=/pay/g
+    boo=pat1.test(pid)
+//pid="pay_XAjslFYAAGEAiXdP"
+if(boo===true){
+getpid=adb.getPid(pid)
+}else{
 
-    name=JSON.parse(getpid.buy)
-    ite=JSON.parse(getpid.ite)
+getpid=adb.idPal(pid)
 
-var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
-var arr
-
-for(var i=0;i<ite.length;i++){
-arr+=
-"\n商品名:"+ite[i].title+", 個数:"+ite[i].quantity
-}
-var fin=arr
-
- QRCode.toDataURL(fin, function (err, url) {
- try{
- adb.insQR(getpid.pid,url)
- }catch(err){
-     console.log(err.name)
-     literr=err.message.substring(0,6)
-}
-})
+console.log("no pid")}
 next()}
+
 
 //  sel qr
 var selQR= function(req, res, next) {
@@ -100,25 +101,31 @@ var selQR= function(req, res, next) {
 console.log("########### sel qr")
 console.log(req.body.pid)
 
-if(pid){
 try{
 selqr=adb.selQR(pid)
 }catch(err){console.log(err)}
 if(selqr){
 console.log("===== pid:",selqr.pid)
 
-
 var snde = require('snd-ema');
 var img="<img src=\""+selqr.qr+"\">"
-var link="<a href=\"http://localhost:3027/shop/adm/dl-"+pid+"\">"+"link"+"</a>"
+    var here="こちらの"
+var str="をクリックしてください。"
+    //var url="3loc.tmsmusic.tokyo"
+var url="localhost:3027"
+var link="<a href=\"http://"+url+"/shop/qr/dl-"+pid+"\">"+"リンク"+"</a>"+str
+var sub="QRコードをお送りしました"
+    var str="をクリックしてください。"
+var link="<a href=\"http://3loc.tmsmusic.tokyo/shop/adm/dl-"+pid+"\">"+"リンク"+"</a>"
+
 
 try{
-var tr=snde.trEma(email,"sub",link)
+var tr=snde.trEma(email,sub,link)
 console.log(typeof tr)
 }catch(err){console.log(err)}
 
 }else { console.log("no selqr")}
-}else { console.log("no allpid")}
+
 
 next()}
 
@@ -142,17 +149,6 @@ console.log("=== oite =====")
 console.log(host)
 next()}
 
-var reqPut= function(req, res,next) {
-var req=require("request")
-var arr=[getEma, getUsr, setPid,allPid, allPal,insQR,chk]
-req
-  .put(host,{arr})
-  .on('res', function(res) {
-    console.log(res.statusCode) // 200
-    console.log(res.headers['content-type']) // 'image/png'
-  })
-next()}
-
 var gcb = function(req, res) {
 res.render("shop/qr/dl", {
 title: "qr code", usr: usr, selpid: selpid,pid:pid,
@@ -165,12 +161,12 @@ literr:literr
 //res.redirect("/shop/qr-"+pid)
 }
 
-router.put("/shop/qr/dl", [getEma, getUsr, setPid,allPid, allPal,insQR])
+//router.put("/shop/qr/dl-:id", [getEma, getUsr, setPid,allPid, allPal])
 
-router.post("/shop/qr/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+router.post("/shop/qr/dl-:id", [getEma, getUsr, postPid, allPid,allPal,selQR,
 chk, gcb])
 
-router.get("/shop/qr/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+router.get("/shop/qr/dl-:id", [getEma, getUsr, getPid, allPid, allPal,selQR,
 chk, gcb])
 
 module.exports = router

@@ -20,12 +20,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-<<<<<<< HEAD
-app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
-=======
 //app.use(favicon(path.join(__dirname, 'public/img', 'favicon.ico')));
-app.use(logger('dev'));
->>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));

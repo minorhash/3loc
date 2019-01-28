@@ -51,11 +51,7 @@ try{
 adb.insPid(email,pid,res.body.amount,
 JSON.stringify(res.body.buyer),
 JSON.stringify(res.body.order.items),
-<<<<<<< HEAD
 utc,0);
-=======
-utc);
->>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 }catch(err){console.log(err)}
 
 })
@@ -77,18 +73,15 @@ age
 oite=res.body.order.items
 ite=JSON.stringify(oite)
 
-<<<<<<< HEAD
 console.log(oite)
 console.log(ite)
 
 //var url="localhost:3027"
 var url="axell-shop.tmsmusic.tokyo"
-=======
     console.log(oite)
     console.log(ite)
 
 var url="localhost:3027"
->>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 var str="金額:"+(res.body.amount).toLocaleString()+"円\n"
 var arr
 var lin="http://"+url+"/shop/adm/dl-"+pid
@@ -108,7 +101,6 @@ console.log(err.name)
 literr=err.message.substring(0,6)
 }
 })
-<<<<<<< HEAD
 
 })//res
 
@@ -146,12 +138,8 @@ console.log(typeof tr)
 }catch(err){console.log(err)}
 
 }else { console.log("no selqr")}
-})//res
 
-next()}
-=======
 })//res
->>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 
 next()};
 
@@ -192,7 +180,6 @@ i18.sku+oite[i].id+"<br>"
 +i18.lin1
 }
 
-<<<<<<< HEAD
 var msum=i18.sum+(res.body.amount).toLocaleString()+i18.yen+"<br>"
 
 var url="http://axell-shop.tmsmusic.tokyo"
@@ -212,7 +199,6 @@ i18.else1+i18.else2+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
 
 var fin=mes+loo+msum+hand+misc
-=======
 var msum=i18.sub+(res.body.amount).toLocaleString()+i18.yen+"<br>"
 +i18.sum+(res.body.amount).toLocaleString()+"<br>"
 
@@ -229,7 +215,6 @@ var misc=
 +i18.adr1+i18.adr2+i18.adr3
 
 var fin=mes+loo+msum+hand+hand2+hand22+hand3+hand4+misc
->>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 
 if(pid){
 snde.trEma(email,sub,fin);
@@ -246,11 +231,7 @@ var chk = function(req, res, next) {
   console.log('=== PID =======================================');
 };
 
-<<<<<<< HEAD
 var fun=[getEma, getUsr,putPid,insQR,senEma,selQR,
-=======
-var fun=[getEma, getUsr,putPid,insQR,senEma,
->>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 chk]
 router.put('/shop/aid/pid',fun);
 

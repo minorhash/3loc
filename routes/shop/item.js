@@ -57,10 +57,6 @@ rob = { title: 'item', usr: usr, mer: skumer };
 res.render('shop/item', rob);
 }; //rcb
 
-<<<<<<< HEAD
 router.post('/shop/item:id', [getEma, getUsr, getSku, chk, rcb]);
-=======
-router.post('/shop/item:id', [getEma, getUsr, getSku,  chk, rcb]);
->>>>>>> 5bfe656769618fa48e6befb1cc939bac440296d3
 
 module.exports = router;

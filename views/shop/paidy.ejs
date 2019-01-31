@@ -1,26 +1,22 @@
-<% include par/head %>
+<% include par/ase/head %>
 <body>
-<% include par/nav %>
+<% include par/ase/nav %>
 <div class="container-fluid">
 <% if(usr){ %>
 <div class="row">
 
-<div class="col-md-2" style="color:black">
-<% include par/left %>
+    <div class="col-md-2" id="bei">
+<% include par/usr/left %>
 </div><!-- col2-->
 
-<div class="col-md-6 col-sm-12"> 
+<div class="col-md-6 col-sm-12" id="ali"> 
     <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p><br>
-<div class="row">
-    <% include aid/item %><br>
+<% include aid/item %>
 
 </div>
-
-</div>
-<div class="col-md-4 col-sm-12" >
+<div class="col-md-4 col-sm-12" id="cor">
 <% include aid/sum %>
 <% include aid/aid %>
-
 
 </div>
 
@@ -31,4 +27,4 @@ please log in.
 <% }  %>
 </div>
 
-    <% include par/foot %>
+    <% include par/ase/foot %>

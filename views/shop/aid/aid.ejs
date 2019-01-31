@@ -6,7 +6,7 @@ Paidyのアカウントにてログインし、お手続きください。</p>
 
 <br><br>
 <div align="right">
-<button id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
+<button class="btn btn-danger" id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
 <script type="text/javascript" src="https://apps.paidy.com/"></script>
     <script>
 var config={
@@ -50,8 +50,8 @@ var payload={
 "quantity":"<%= ite[i].quantity %>",
 "title":"<%= ite[i].title %>",
 "unit_price":"<%= ite[i].unit_price %>"
-       },
-    <% } %>
+},
+<% } %>
 ],
 "order_ref":"88e021674",
 "shipping":0,

@@ -28,7 +28,7 @@
 <div id="cd-col" class="well col-md-8 col-xs-12" style="color:black">
 
 <div class="well col-md-3" style="color:black">
-<div align="left"><img src="../img/cd/<%=mer.sku%>.png">
+<div align="left"><img src="../img/pre/<%=mer.sku%>.png">
 <h5>商品番号：TMS-<%=mer.sku%><br></h5>
 <h5>リリース：<%=mer.rel%><br></h5>
 
@@ -39,12 +39,10 @@
 <div class="well col-md-6" style="color:black">
 <h4><%=mer.name%><br></h4>
 <div class="well" style="color:black">
-<%if(typeof song!="undefined"|| typeof song!==null){%>
-<%for(var i in song){%>
-<%var num=parseInt(i) %>
-<%=num+1%>.&nbsp;<%=song[i]%><br>
-<%}%>
-<%}%>
+
+ひんばん:<%=mer.sku%><br>
+かかく:<%=mer.pri %><br>
+しょうさい:<%=mer.des %><br>
 </div>
 </div>
 

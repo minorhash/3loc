@@ -78,6 +78,10 @@ console.log(ite)
 
 //var url="localhost:3027"
 var url="axell-shop.tmsmusic.tokyo"
+    console.log(oite)
+    console.log(ite)
+
+var url="localhost:3027"
 var str="金額:"+(res.body.amount).toLocaleString()+"円\n"
 var arr
 var lin="http://"+url+"/shop/adm/dl-"+pid
@@ -134,10 +138,10 @@ console.log(typeof tr)
 }catch(err){console.log(err)}
 
 }else { console.log("no selqr")}
+
 })//res
 
-next()}
-
+next()};
 
 var senEma = function(req, res, next) {
 console.log('=== senEma =======================================');
@@ -195,6 +199,22 @@ i18.else1+i18.else2+i18.lin1+i18.auto1+i18.auto2+i18.lin1
 +i18.adr1+i18.adr2+i18.adr3
 
 var fin=mes+loo+msum+hand+misc
+var msum=i18.sub+(res.body.amount).toLocaleString()+i18.yen+"<br>"
++i18.sum+(res.body.amount).toLocaleString()+"<br>"
+
+var hand=" 商品お渡しについて<br><br>2019年2月3日のワンマンライブ会場にて、商品のお渡しをさせて頂きます。<br>"
+
+var hand2="ちゅうもんばんごうを<a href='http://localhost:3027'>クリック</a>してできたQRコードを当日スタッフにご提示ください。<br>"
+var hand22="QRコードのリンクを別途メールでお送りしています。<br>"
+var hand3="商品の発送はございませんので、ご注意ください。<br>"
+var hand4="paypal決済につきましては、お引き渡し時に、ご入金確認が取れていない商品についてはお引渡しできません。<br>"
+
+//var ship= // i18.ship1+i18.ship2+i18.ship3 // +i18.ship4+i18.ship5
+var misc=
++i18.misc+i18.lin1+i18.auto1+i18.auto2+i18.lin1
++i18.adr1+i18.adr2+i18.adr3
+
+var fin=mes+loo+msum+hand+hand2+hand22+hand3+hand4+misc
 
 if(pid){
 snde.trEma(email,sub,fin);

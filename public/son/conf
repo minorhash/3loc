@@ -1,0 +1,45 @@
+CONFLICT (content): Merge conflict in views/shop/par/his/pal.ejs
+Removing views/shop/par/.vid.ejs.un~
+Removing views/shop/par/.sche.ejs.un~
+Removing views/shop/par/.form.ejs.un~
+Removing views/shop/par/.foot.ejs.un~
+Auto-merging views/shop/adm/hid.ejs
+CONFLICT (content): Merge conflict in views/shop/adm/hid.ejs
+Auto-merging views/shop/adm/bk/act.ejs
+Auto-merging routes/shop/qr/bk/cr.js
+Auto-merging routes/shop/pal/suc.js
+CONFLICT (content): Merge conflict in routes/shop/pal/suc.js
+Auto-merging routes/shop/pal/pay.js
+CONFLICT (content): Merge conflict in routes/shop/pal/pay.js
+Auto-merging routes/shop/item.js
+CONFLICT (content): Merge conflict in routes/shop/item.js
+Auto-merging routes/shop/index.js
+Removing routes/shop/aid/son/successful.payment@paidy.com.js
+Auto-merging routes/shop/aid/pid.js
+CONFLICT (content): Merge conflict in routes/shop/aid/pid.js
+Removing routes/shop/aid/clo.js
+Removing routes/shop/aid/cli.js
+Removing routes/shop/aid/chk.js
+Auto-merging routes/shop/aid/bk/pid.js
+Auto-merging routes/shop/adm/hid.js
+CONFLICT (content): Merge conflict in routes/shop/adm/hid.js
+Auto-merging package.json
+Auto-merging package-lock.json
+CONFLICT (content): Merge conflict in package-lock.json
+Auto-merging node_modules/usrdb/db/aid.db
+CONFLICT (content): Merge conflict in node_modules/usrdb/db/aid.db
+Auto-merging node_modules/mypal/tmp.json
+CONFLICT (content): Merge conflict in node_modules/mypal/tmp.json
+Removing node_modules/cardb/jol/sel.sql
+Removing node_modules/cardb/jol/sch.sql
+Removing node_modules/cardb/jol/ins.sql
+Removing node_modules/cardb/jol/dr.sql
+Removing node_modules/cardb/jol/del.sql
+Removing node_modules/cardb/jol/cr1.sql
+Auto-merging node_modules/cardb/db/car.db
+CONFLICT (content): Merge conflict in node_modules/cardb/db/car.db
+Auto-merging i18n/shop/ja.json
+Auto-merging app.js
+CONFLICT (content): Merge conflict in app.js
+Automatic merge failed; fix conflicts and then commit the result.
+root# cmd/all.sh 

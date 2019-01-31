@@ -1,9 +1,13 @@
 <div class="row">
 <br>
+<<<<<<< HEAD
 <%if(!usr){%>
 ログインしてください。<br>
 <%}else{%>
 
+=======
+<%if(seltmp) { %>
+>>>>>>> e5cdb0a6a6ce82cd054bf28649089706d98bc305
 <%if(seltmp && mer.length!==0){%>
 <div class="col-md-8">
 <% include ./img %>
@@ -24,11 +28,15 @@
 
 <div class="box93">
 <% include ./pay %>
+<<<<<<< HEAD
 </div>
 </div><!-- col4-->
 
+=======
+>>>>>>> e5cdb0a6a6ce82cd054bf28649089706d98bc305
 
 <%}else{%>カートは空です。<%}%>
+<%}else{%>no seltmp<%}%>
 </div>
 
 <%}%>

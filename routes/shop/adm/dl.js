@@ -11,7 +11,7 @@ var email, usr,pid
 var selpid, allpid,allnow,allpal,selqr,getpid
 var ite, oite,opal,ship
 var jpal=[],opal=[]
-var literr,name,ite,host
+var literr,name,ite,host,boo
 
 var cred = require("./js/cred")
 // === get ============================
@@ -58,8 +58,7 @@ next()}
 
 //  getpid
 var setPid= function(req, res, next) {
-//pid=req.body.pid
-pid=req.params.id
+pid=req.body.pid
 //pid="pay_XAjslFYAAGEAiXdP"
 if(pid){
 getpid=adb.getPid(pid)
@@ -68,52 +67,93 @@ getpid=adb.getPid(pid)
 next()}
 
 //  ins qr
-//var insQR= function(req, res, next) {
-//var QRCode = require('qrcode')
-////var json=JSON.stringify(getpid)
+var insQR= function(req, res, next) {
+var QRCode = require('qrcode')
+//var json=JSON.stringify(getpid)
 
-//    name=JSON.parse(getpid.buy)
-//    ite=JSON.parse(getpid.ite)
+    name=JSON.parse(getpid.buy)
+    ite=JSON.parse(getpid.ite)
 
-//var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
-//var arr
+var str="金額:"+(getpid.mnt).toLocaleString()+"円\n"
+var arr
 
-//for(var i=0;i<ite.length;i++){
-//arr+=
-//"\n商品名:"+ite[i].title+", 個数:"+ite[i].quantity
-//}
-//var fin=arr
+for(var i=0;i<ite.length;i++){
+arr+=
+"\n商品名:"+ite[i].title+", 個数:"+ite[i].quantity
+}
+var fin=arr
 
-// QRCode.toDataURL(fin, function (err, url) {
-// try{
-// adb.insQR(getpid.pid,url)
-// }catch(err){
-//     console.log(err.name)
-//     literr=err.message.substring(0,6)
-//}
-//})
-//next()}
+ QRCode.toDataURL(fin, function (err, url) {
+ try{
+ adb.insQR(getpid.pid,url)
+ }catch(err){
+     console.log(err.name)
+     literr=err.message.substring(0,6)
+}
+})
+next()}
 
 //  sel qr
 var selQR= function(req, res, next) {
 
-if(pid){
+console.log("########### sel qr")
+console.log(req.body.pid)
 
+if(pid){
 try{
 selqr=adb.selQR(pid)
 }catch(err){console.log(err)}
-
 if(selqr){
 console.log("===== pid:",selqr.pid)
 
-// var snde = require('snd-ema');
-// var img="<img src=\""+selqr.qr+"\">"
-// var link="<a href=\"http://localhost:3027/shop/qr-"+pid+"\">"+"link"+"</a>"
+
+var snde = require('snd-ema');
+    var img="<img src=\""+selqr.qr+"\">"
+    var link="<a href=\"http://localhost:3000/shop/qr-"+pid+"\">"+"link"+"</a>"
 
     // try{
     // var tr=snde.trEma(email,"sub",link)
     // console.log(typeof tr)
     // }catch(err){console.log(err)}
+
+}else { console.log("no selqr")}
+}else { console.log("no allpid")}
+
+//pid=req.body.pid
+//pid=req.params.id
+pid="pay_XEGthUsAAEsAsrsa"
+//pid="pay_XAjslFYAAGEAiXdP"
+var pat1=/pay/g
+    boo=pat1.test(pid)
+    if(boo===true){
+getpid=adb.getPid(pid)
+}else{
+getpid=adb.idPal(pid)
+console.log("no pid")}
+
+next()}
+
+var delQR = function(req, res, next) {
+
+if(boo===true){
+try{adb.delQR(pid)}
+catch(err){console.log(err)}
+}else{
+try{adb.pdelQR(pid)}
+catch(err){console.log(err)}
+
+    console.log("no pid")}
+
+next()}
+//  sel qr
+var selQR= function(req, res, next) {
+
+if(pid){
+
+try{selqr=adb.selQR(pid)}catch(err){console.log(err)}
+
+if(selqr){
+console.log("===== pid:",selqr.pid)
 
 }else { console.log("no selqr")}
 }else { console.log("no pid")}
@@ -123,6 +163,9 @@ next()}
 // chk
 var chk = function(req, res, next) {
 host = url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl,
 protocol: req.protocol,
 host: req.get('host'),
 pathname: req.originalUrl,
@@ -131,6 +174,7 @@ pathname: req.originalUrl,
 console.log("=== chk =====================")
 console.log(pid)
 console.log(email)
+console.log(getpid)
 // if(selqr){
 // console.log(selqr)
 // }else{console.log("no sel qr")}
@@ -140,16 +184,16 @@ console.log("=== oite =====")
 console.log(host)
 next()}
 
-// var reqPut= function(req, res,next) {
-// var req=require("request")
-// var arr=[getEma, getUsr, setPid,allPid, allPal,insQR,chk]
-// req
-//   .put(host,{arr})
-//   .on('res', function(res) {
-//     console.log(res.statusCode) // 200
-//     console.log(res.headers['content-type']) // 'image/png'
-//   })
-// next()}
+var reqPut= function(req, res,next) {
+var req=require("request")
+var arr=[getEma, getUsr, setPid,allPid, allPal,insQR,chk]
+req
+  .put(host,{arr})
+  .on('res', function(res) {
+    console.log(res.statusCode) // 200
+    console.log(res.headers['content-type']) // 'image/png'
+  })
+next()}
 
 var gcb = function(req, res) {
 res.render("shop/adm/dl", {
@@ -163,13 +207,15 @@ literr:literr
 //res.redirect("/shop/qr-"+pid)
 }
 
+
 //router.put("/shop/adm/dl", [getEma, getUsr, setPid,allPid, allPal,selQR,
 //chk])
 
-// router.post("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
-// chk, gcb])
+router.post("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+chk, gcb])
 
-router.all("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+router.get("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
+//router.all("/shop/adm/dl-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,
 chk, gcb])
 
 module.exports = router

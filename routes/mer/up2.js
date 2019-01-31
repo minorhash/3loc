@@ -4,7 +4,7 @@ var router = express.Router();
 // === db
 var db = require('cardb');
 var adb = require('usrdb');
-var allmer = db.allMer();
+var allmer = db.allPre();
 
 var email, allmer, usr, sku;
 var mailusr, skumer, skuson, obj;
@@ -39,7 +39,7 @@ var getSku = function(req, res, next) {
   if (req.body) {
     sku = req.body.sku;
     try {
-      skumer = db.skuMer(sku);
+      skumer = db.skuPre(sku);
     } catch (err) {
       console.log(err);
     }

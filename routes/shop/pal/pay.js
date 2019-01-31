@@ -99,6 +99,7 @@ var sadd=add.toString()
         tran.amount.details.shipping=0
         tran.amount.total =sadd
         console.log(tran)
+        tran.amount.total =ssum
 }
     next()}
 

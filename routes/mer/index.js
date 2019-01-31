@@ -4,7 +4,7 @@ var router = express.Router();
 // === db
 var db = require('cardb');
 var adb = require('usrdb');
-var allmer = db.allMer();
+var allmer = db.allPre();
 
 var email, allmer, usr, bool, myerr, mailusr;
 // === login ============================
@@ -15,27 +15,24 @@ var cred = require("./js/cred");
 var getEma = function(req, res, next) {
   email = cred.ema(req);
   mailusr = adb.mailUsr(email);
-  next();
-};
+next();};
 
 var getUsr = function(req, res, next) {
   if (mailusr) {
     usr = mailusr.name;
     console.log( usr);
-  } else {
+} else {
     usr = null;
     console.log("no usr");
-  }
-  next();
-};
+}
+next();};
 
 
 var chk = function(req, res, next) {
   console.log(email);
   console.log("=== usr");
   console.log(allmer);
-  next();
-};
+  next();};
 
 
 var cb = function(req, res, next) {
@@ -63,8 +60,7 @@ var getCok = function(req, res, next) {
     console.log('no req.body');
   } //req.body
 
-  next();
-}; //getCok
+  next();}; //getCok
 
 var getAdm = function(req, res, next) {
   if (email) {
@@ -83,15 +79,13 @@ var getAdm = function(req, res, next) {
   } else {
     console.log('no email');
   }
-  next();
-}; //getAdm
+next();}; //getAdm
 
 var chk = function(req, res, next) {
   console.log(email);
   console.log(pss);
   console.log(usr);
-  next();
-};
+  next();};
 
 var rcb = function(req, res) {
   var rob = { usr: usr, title:"post usr", mer: allmer};

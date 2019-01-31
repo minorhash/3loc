@@ -1,0 +1,41 @@
+<% include par/head %>
+<body>
+<% include par/nav %>
+
+<div class="container-fluid">
+<div class="row">
+
+<% if(usr){ %>
+<div class="well col-lg-3 col-sm-12" style="color:black">
+<% include ../par/left %>
+</div>
+
+<div class="well col-lg-9 col-sm-12" style="color:black">
+
+
+<div class="box90">
+受渡し
+</div><!-- box90-->
+<br>
+
+お名前:&nbsp;<%= usr %><br>
+
+小計:&nbsp;<%= sub.toLocaleString() %> &nbsp;円 <br>
+税:&nbsp;<%= Math.round(sub*0.08) %>&nbsp;円 <br>
+合計:&nbsp;<%= Math.round(sub*1.08) %>&nbsp;円 <br>
+
+    <% for(var i=0;i<mailtmp;i++) {%>
+    sku:<%= mailtmp[i].sku %>
+    <% } %>
+    <% }else { %>
+please log in.
+    <% } %>
+
+</div>
+<% include par/2side %>
+</div>
+</div>
+
+</body>
+
+

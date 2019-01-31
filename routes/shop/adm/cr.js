@@ -51,12 +51,12 @@ arr+=
 }
 var fin=str+arr
 
-QRCode.toDataURL(fin, function (err, url) {
-try{
-adb.insQR(getpid.pid,url)
-}catch(err){
-console.log(err.name)
-literr=err.message.substring(0,6)
+ QRCode.toDataURL(fin, function (err, url) {
+ try{
+ adb.insQR(getpid.pid,url)
+ }catch(err){
+     console.log(err.name)
+     literr=err.message.substring(0,6)
 }
 })
 next()}
@@ -79,7 +79,7 @@ console.log(host)
 next()}
 
 var gcb = function(req, res) {
-res.render("shop/adm/cr", {
+res.render("shop/qr/cr", {
 title: "qr code", usr: usr, selpid: selpid,pid:pid,
 allpid: allpid, allnow: allnow,
 oite: oite,opal:opal,
@@ -90,7 +90,7 @@ literr:literr
 //res.redirect("/shop/qr-"+pid)
 }
 
-router.post("/shop/adm/cr", [getEma, getUsr, setPid,insQR,
+router.post("/shop/qr/cr", [getEma, getUsr, setPid,insQR,
 chk, gcb])
 
 // router.get("/shop/cr-:id", [getEma, getUsr, setPid,allPid, allPal,selQR,

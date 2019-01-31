@@ -30,7 +30,7 @@ if (sku) {
 next()}; //getSku
 
 var getSon = function(req, res, next) {
-  try {    skuson = db.skuSon(sku);
+try {    skuson = db.skuSon(sku);
 console.log(skuson)
 
   } catch (err) {    console.log(err);  }
@@ -44,10 +44,17 @@ next()};
 var chk = function(req, res, next) {
 console.log(sku);
 console.log(skumer);
+<<<<<<< HEAD
 next()};
 // === rend
 var cb = function(req, res) {
 rob = { title: 'item', usr: usr, mer: skumer, song: obj};
+=======
+next();};
+// === rend
+var rcb = function(req, res) {
+rob = { title: 'item', usr: usr, mer: skumer };
+>>>>>>> e5cdb0a6a6ce82cd054bf28649089706d98bc305
 res.render('shop/item', rob);
 }; //rcb
 

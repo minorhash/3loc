@@ -9,8 +9,10 @@ var email="minorhash@gmail.com"
 
 // === pid ===
 
+try{
 var allpid=adb.allPid(email)
-//console.log(allpid)
+console.log(allpid.length)
+}catch(err){console.log(err)}
 
 for(var i=0;i<allpid.length;i++){
 
@@ -22,6 +24,7 @@ age
 .then(res => {
 if(res.body.status=="closed"){
 console.log("already closed")
+console.log(res.body.id)
 }else{
 console.log("auth")
 console.log(res.body.id)
@@ -41,14 +44,4 @@ console.log(res.body.id)
 })//then
 
 }//for
-
-// var pid="pay_W-OsHlUAAFkAfXVd"
-// age
-// .get('https://api.paidy.com/payments/'+pid)
-// .set("Content-Type", "application/json")
-// .set("Paidy-Version", "2018-04-10")
-// .set("Authorization", "Bearer"+sec)
-// .then(res => {
-// console.log(res.body.order.items)
-// })
 

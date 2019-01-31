@@ -4,7 +4,7 @@ var router = express.Router();
 // == sess =============================
 var db = require("cardb");
 var adb = require("usrdb");
-var allmer = db.allMer();
+//var allmer = db.allMer();
 var allpre = db.allPre();
 
 var email, pss, usr;

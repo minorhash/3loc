@@ -17,10 +17,6 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e5cdb0a6a6ce82cd054bf28649089706d98bc305
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());

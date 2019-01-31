@@ -1,0 +1,47 @@
+<% if(typeof mer!==undefined) { %>
+
+<div class=" col-md-4" style="color:black">
+<span align="left"><img src="../img/pre/<%=mer.sku%>.png" width=350>
+</span>
+
+</div>
+
+<div valign="bottom" align="left" class=" col-md-5"> 
+<h4>商品名:<%=mer.name%></h4>
+<h5>商品番号：TMS-<%=mer.sku%></h5>
+<h5>カテゴリー:<%=mer.cat%></h5>
+<h5>価格:<%=mer.pri.toLocaleString() %> &nbsp;円</h5><br>
+<div class="box90">商品紹介</div><br>
+<div class=""><%=mer.sku%></div>
+
+<form method="get" action="/shop">
+<button type="submit">ショップに戻る</button>
+</form>
+</div><!-- col5-->
+
+<div class=" col-md-3" style="color:black">
+
+<div class="box94">
+<h4>価格:&nbsp;
+<!-- %=mer.pri.toLocaleString() % -->
+円&nbsp;(+税)</h4> 
+<div style="line-height:10px">別途送料有</div>
+
+<br>
+<form action="/shop/cart" method="post">
+<input type="hidden" name="sku" value=<%=mer.sku%>>
+数量:
+<input id="number" type="number" name="uni" value="1" min="0" step="1"><br><br>
+&nbsp;&nbsp;
+<button type="submit">カートに入れる</button>
+</form>
+
+<% } else {  %>
+no mer
+<% } %>
+
+<br>
+<a href="/mail" target="_blank">
+<i class="far fa-envelope"> &nbsp; 商品に関する問合せ</a></i>
+
+

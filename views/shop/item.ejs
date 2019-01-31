@@ -22,53 +22,9 @@
 
 </div><!-- col10 -->
 
-<<<<<<< HEAD
-=======
-</div>
-
-<div valign="bottom" align="left" class="well col-md-5" style="color:black">
-<h4>商品名:<%=mer.name%></h4>
-<h5>商品番号：TMS-<%=mer.sku%></h5>
-    <h5>カテゴリー:<%=mer.cat%></h5>
-    <h5>価格:<%=mer.pri.toLocaleString() %> &nbsp;円</h5><br>
-    <div class="box90">商品紹介</div><br>
-<div class="well"><%=mer.des %></div>
-
-<form method="get" action="/shop">
-<button type="submit">ショップに戻る</button>
-</form>
-</div><!-- col5-->
-
-<div class="well col-md-3" style="color:black">
-
-<div class="box94">
-<h4>価格:&nbsp;
-<!-- %=mer.pri.toLocaleString() % -->
-円&nbsp;(+税)</h4> 
-<div style="line-height:10px">別途送料有</div>
-
-<br>
-<form action="/shop/cart" method="post">
-<input type="hidden" name="sku" value="<%=mer.sku%>">
-数量:
-<input id="number" type="number" name="uni" value="1" min="0" step="1"><br><br>
-&nbsp;&nbsp;
-<button type="submit">カートに入れる</button>
-</form>
-
-<% } else {  %>
-no mer
-<% } %>
-
-<br>
-<a href="/mail" target="_blank">
-<i class="far fa-envelope"> &nbsp; 商品に関する問合せ</a></i>
-
-</div><!-- -->
 
 
 </div><!-- main-col -->
->>>>>>> e5cdb0a6a6ce82cd054bf28649089706d98bc305
 </div><!--row-->
 </div><!-- /container -->
 

@@ -95,8 +95,10 @@ taid.amount = tsum;
 var getTai = function(req, res, next) {
   taid.amount = tsum;
   // // buyer
+    if(mailusr){
   taid.buyer.email = email;
   taid.buyer.name1 = mailusr.name;
+    }else{console.log("no mailusr")}
 
   if (mailadr) {
     taid.buyer.phone = mailadr.phn;
@@ -147,11 +149,11 @@ console.log('=== PAIDY ====================================');
 //console.log(son)
 console.log(pub)
 console.log(email)
+console.log(sum)
 console.log(tsum)
 console.log(taid.amount)
 //console.log(mer)
 //console.log(mailadr)
-console.log(taid.order.shipping)
 console.log(taid.order.tax)
 console.log(taid.order.items)
 
@@ -168,7 +170,7 @@ pub:pub,ship:taid.order.shipping
 })
 }
 var fun= [  getEma,  getUsr,  getAdr,getTmp,putMer,chkSh,putSum,redSum,getTai,putTai,
-    chk,gcb]
+chk,gcb]
 router.get("/shop/paidy",fun); //put
 
 

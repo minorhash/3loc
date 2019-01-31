@@ -16,35 +16,34 @@ var cred = require("./js/cred");
 // === get ============================
 
 var getEma = function(req, res, next) {
-  email = cred.ema(req);
-  mailusr = adb.mailUsr(email);
-  next();
+email = cred.ema(req);
+mailusr = adb.mailUsr(email);
+next();
 };
 
 var getUsr = function(req, res, next) {
-  if (mailusr) {
-    usr = mailusr.name;
-  } else {
-    usr = null;
-    console.log("no usr");
-  }
-  next();
+if (mailusr) {
+usr = mailusr.name;
+} else {
+usr = null;
+console.log("no usr");
+}
+next();
 };
 
 var chk = function(req, res, next) {
   console.log("=== chk===");
   console.log(email);
   console.log(usr);
-  console.log(allpre);
   next();
 }; // chkEma
 
 var gcb = function(req, res) {
-  res.render("shop", {
-    title: "shop",
-    mer: allpre,
-    usr: usr
-  });
+res.render("shop", {
+title: "shop",
+mer: allpre,
+usr: usr
+});
 };
 router.get("/shop", [getEma, getUsr, chk, gcb]);
 

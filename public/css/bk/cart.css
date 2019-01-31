@@ -116,3 +116,30 @@
 
 }
 
+#bkg1{
+background-color:lightgray;
+border:solid 1px gray;
+border-radius:10px;
+}
+#gray{
+background-color:lightgray;
+border:solid 1px gray;
+border-radius:10px;
+}
+#yell{
+background-color:yellow;
+border:solid 1px gray;
+border-radius:10px;
+}
+#red{
+background-color:red;
+border:solid 1px gray;
+border-radius:10px;
+}
+#wh{
+background-color:white;
+}
+
+#blu{
+background-color:blue;
+}

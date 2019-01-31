@@ -97,6 +97,7 @@ console.log(err.name)
 literr=err.message.substring(0,6)
 }
 })
+
 })//res
 
 next()};
@@ -178,13 +179,15 @@ i18.sku+oite[i].id+"<br>"
 var msum=i18.sum+(res.body.amount).toLocaleString()+i18.yen+"<br>"
 
 var url="http://axell-shop.tmsmusic.tokyo"
+
+var hand1=" <br><br>商品お渡しについて<br><br>2019年2月3日のワンマンライブ会場にて、商品のお渡しをさせて頂きます。<br>"
+var hand2="注文番号を<a href="+url+"/shop/qr/dl-"+pid+">クリック</a>して作成したQRコードを当日スタッフにご提示ください。<br>"
+var hand22="QRコードのリンクを別途メールでお送りしています。<br>"
+var hand3="商品の発送はございませんので、ご注意ください。<br>"
+var hand4="paypal決済につきましては、お引き渡し時に、"
+var hand5="ご入金確認が取れていない商品についてはお引渡しできません。<br>"
+
 var hand=hand1+hand2+hand22+hand3+hand4+hand5
-// var hand1=" <br><br>商品お渡しについて<br><br>2019年2月3日のワンマンライブ会場にて、商品のお渡しをさせて頂きます。<br>"
-// var hand2="注文番号を<a href="+url+"/shop/qr/dl-"+pid+">クリック</a>して作成したQRコードを当日スタッフにご提示ください。<br>"
-// var hand22="QRコードのリンクを別途メールでお送りしています。<br>"
-// var hand3="商品の発送はございませんので、ご注意ください。<br>"
-// var hand4="paypal決済につきましては、お引き渡し時に、"
-// var hand5="ご入金確認が取れていない商品についてはお引渡しできません。<br>"
 
 //var ship= // i18.ship1+i18.ship2+i18.ship3 // +i18.ship4+i18.ship5
 var misc=

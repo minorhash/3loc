@@ -1,0 +1,34 @@
+<div class=" col-sm-6 col-sm-12" style="color:black;background-color:white">
+
+<p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p>
+<br>
+<%for(var i=0;i<seltmp.length;i++){%>
+<%if(seltmp[i].uni!==0){%>
+
+<div align="center" class="col-md-4">
+<img src="../img/pre/<%=mer[i].sku%>.png" width="150" height="150" >
+</div><!-- col4-->
+
+<div class="pa2">
+商品名：&nbsp;  <%=mer[i].name%><br>
+商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
+単価（税込）: &nbsp;<%= Math.round((mer[i].pri)*1.08).toLocaleString()%>円 <br>
+注文数:&nbsp; <%=seltmp[i].uni%><br>
+
+<%} else { %>
+no seltmp
+<%}%>
+
+<%}%><!-- for -->
+</div><!-- pa2-->
+
+
+<div class="pabox">商品合計(税込）：</div>
+<%if(sum){%><%= Math.round(sum*1.08).toLocaleString()%> 円<%}%>
+合計(税込）：
+<%if(sum){%>
+<%=(sum + tax).toLocaleString()%> 円
+<%}%>
+
+</div><!-- col3-->
+

@@ -17,19 +17,19 @@
 <br>
 
 <% if(usr) { %>
-<div class="well col-md-12" style="color:black">
+<div class=" col-md-12" style="color:black">
 
 <% if(literr){ %> err:<p class="label label-default"> <%= literr %></p>
 <%} %>
 
-<div class="well">
+<div class="">
 <% if(selqr){ %>
 pid:<%= selqr.pid %><br>
 <img src="<%= selqr.qr %>">
 <% } else { %>
 no qr
 <% } %>
-</div><!-- well-->
+</div><!-- -->
 
 </div><!-- col12-->
 <% } else { %>

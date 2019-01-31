@@ -12,11 +12,12 @@ var sess = require('cookie-session');
 //
 var app = express();
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(logger('dev'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(cookieParser());
@@ -26,7 +27,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(logger('dev'));
 
-//app.use(cookieParser());
 
 app.use(
   sess({
@@ -57,7 +57,7 @@ app.use('/', page);
 var shop = require('./routes/shop/index');
 app.use('/', shop);
 
-var top=["index","cart","item","his","my","dl","fan",]
+var top=["index","cart","item","his","my","dl","fan"]
 
 top.forEach(function(ite){
 ite=require('./routes/shop/'+ite)
@@ -97,11 +97,21 @@ app.use('/', aaid[i]);
 }
 
 // === pal ===
+
 var apal=["pay","suc","can"]
 apal.forEach(function(ite){
 ite=require('./routes/shop/pal/'+ite)
 app.use('/', ite)
 })
+
+// === pre ===
+
+var apre=["pay","suc","can"]
+apre.forEach(function(ite){
+ite=require('./routes/shop/pre/'+ite)
+app.use('/', ite)
+})
+
 // === mer ===
 var mer = require('./routes/mer/index');
 app.use('/', mer);

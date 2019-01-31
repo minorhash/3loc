@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html>
-<% include par/head %>
-<% include par/nav %>
+<% include par/ase/head %>
+<% include par/ase/nav %>
 <body>
 
 <div class="container-fluid">
 <div class="row">
 
-<div class="col-md-2" style="color:black">
-<% include par/left %>
+<div class="col-md-2" id="bei">
+<% include par/usr/lang %>
+<% include par/usr/left %>
 </div><!-- col2-->
 
-<div class="col-md-10" style="color:black">
+<div class="col-md-10" id="ali">
 <p class="box90"><%=shop.cart%></p>
-<% include par/car/main %>
+<br>
+<% include par/car/cen %>
 <br>
 
 </div><!-- col10 -->
 </div><!-- row-->
 
-<div class="well row">
-<div class="col-md-2" style="color:black"></div><!-- col2-->
+<div class=" row">
+<div class="col-md-2" id="bei"></div><!-- col2-->
 
-<div class="col-md-8" style="color:black">
+<div class="col-md-8" id="bei">
 <% include par/car/not %>
 </div><!-- col8-->
 
 
-<div class="col-md-2" style="color:black"></div><!--row-->
+<div class="col-md-2" id="bei"></div><!--row-->
 
 </div><!--row-->
 </div><!-- /container -->
 
-<% include par/foot %>
+<% include par/ase/foot %>
 
 
 </body>

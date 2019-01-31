@@ -1,14 +1,26 @@
-#mis, #ali, #bei {
+#mis, #lg, #gai, #cor, #bei, #ali {
   font-size: 14px;
   color: black;
+}
+
+#ali {
+  background-color: aliceblue;
 }
 
 #bei {
   background-color: beige;
 }
 
-#ali {
-  background-color: aliceblue;
+#cor {
+  background-color: cornsilk;
+}
+
+#gai {
+  background-color: gainsboro;
+}
+
+#lg {
+  background-color: lightgreen;
 }
 
 #mis {

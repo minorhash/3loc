@@ -6,22 +6,38 @@ $fbk:black;
     color:$fbk;
 }
 
-$bk-bei:beige;
 $bk-ali:aliceblue;
+$bk-bei:beige;
+$bk-cor:cornsilk;
+$bk-gai:gainsboro;
 $bk-mis:mistyrose;
-
-#bei{
-@extend %fon1;
-background-color:$bk-bei;
-}
+$bk-lg:lightgreen;
 
 #ali{
 @extend %fon1;
 background-color:$bk-ali;
 }
 
-#mis {
+#bei{
+@extend %fon1;
+background-color:$bk-bei;
+}
 
+#cor{
+@extend %fon1;
+background-color:$bk-cor;
+}
+
+#gai{
+@extend %fon1;
+background-color:$bk-gai;
+}
+
+#lg{
+@extend %fon1;
+background-color:$bk-lg;
+}
+#mis {
 @extend %fon1;
 background-color:$bk-mis;
 }

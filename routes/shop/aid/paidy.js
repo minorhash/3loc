@@ -42,26 +42,24 @@ var getTmp = function(req, res, next) {
   next()};
 
 var putMer = function(req, res, next) {
-    mer=[],    skua=[]
-  for (var i = 0; i < mailtmp.length; i++) {
-    mer[i] = db.skuPre(mailtmp[i].sku);
+mer=[],    skua=[]
+for (var i = 0; i < mailtmp.length; i++) {
+mer[i] = db.skuPre(mailtmp[i].sku);
 skua.push(mer[i].sku)
-  }
-  next()};
+}
+next()};
 
 var chkSh= function(req, res, next) {
+console.log("=== chk dl ===")
 
 boa=[]
 for(var i=0;i<skua.length;i++){
 
-console.log("=== chk dl ===")
 var pat=/^\d{3}$/;
 var test=pat.test(skua[i])
 boa.push(test)
 }
 ind=boa.indexOf(true)
-    console.log("ind")
-    console.log(ind)
 
 next()};
 
@@ -69,8 +67,8 @@ var putSum = function(req, res, next) {
     suma=[]
   for (var i = 0; i < mailtmp.length; i++) {
     suma[i] = mailtmp[i].uni * mer[i].pri;
-  }
-  next()};
+}
+next()};
 // === chk dl ===
 
 var redSum = function(req, res, next) {
@@ -87,10 +85,10 @@ tsum=sum+tax
 
 taid.amount = tsum;
 
-    } else {
-      console.log('no sum');
-    }
-  next()};
+} else {
+console.log('no sum');
+}
+next()};
 
 var getTai = function(req, res, next) {
   taid.amount = tsum;

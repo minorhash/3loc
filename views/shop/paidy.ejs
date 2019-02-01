@@ -5,20 +5,21 @@
 <% if(usr){ %>
 <div class="row">
 
-    <div class="col-md-2" id="bei">
+<div class="col-md-2" id="bei">
 <% include par/usr/left %>
 </div><!-- col2-->
 
 <div class="col-md-6 col-sm-12" id="ali"> 
-    <p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p><br>
+<p class="box90">&nbsp;注文内容ご確認ページ（Paidy決済ご希望の方用）</p><br>
 <% include aid/item %>
 
 </div>
+
 <div class="col-md-4 col-sm-12" id="cor">
 <% include aid/sum %>
-<% include aid/aid %>
+<br>
 
-</div>
+<% include aid/aid %>
 
 </div><!-- row-->
 
@@ -27,4 +28,4 @@ please log in.
 <% }  %>
 </div>
 
-    <% include par/ase/foot %>
+<% include par/ase/foot %>

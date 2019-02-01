@@ -1,0 +1,11 @@
+<div class="pabox">商品合計(税込）：</div>
+<div class="pabox">
+    <%if(sum){%>
+    <%= (sum+tax).toLocaleString() %> 円 
+</div><!-- pabox-->
+
+<%} else {%>
+no sum
+<%}%>
+
+

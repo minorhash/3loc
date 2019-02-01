@@ -1,0 +1,20 @@
+<div class="row">
+<%for(var i=0;i<seltmp.length;i++){%>
+
+<div align="center" class="col-md-4">
+<img src="../img/pre/<%=mer[i].sku%>.png" width="150" height="" >
+</div><!-- col4-->
+
+<div class="col-md-6">
+<br>
+<div class="pa2">
+商品名：&nbsp;  <%=mer[i].name%><br>
+商品番号: &nbsp; TMS-<%=seltmp[i].sku%><br>
+単価（税込）: &nbsp;<%= Math.round((mer[i].pri)*1.08).toLocaleString()%>円 <br>
+注文数:&nbsp; <%=seltmp[i].uni%>
+</div><!-- pa2-->
+
+</div><!-- col8-->
+<%}%><!-- for -->
+
+</div><!-- row-->

@@ -1,20 +1,9 @@
-<p class="pa1">
-Paidy決済をご希望の方は下記ボタンを押してください。<br>
-Paidyのページが表示されますので、
-「お支払い手続きへ」をクリック後、
-Paidyのアカウントにてログインし、お手続きください。</p>
-
-<br><br>
-<div align="right">
-<button class="btn btn-danger" id="paidy-checkout-button" onclick="paidyPay()">Paidyで決済する</button>
-<script type="text/javascript" src="https://apps.paidy.com/"></script>
-<script> 
 var config={
 "api_key":"<%= pub %>",
 "logo_url":"http://www.paidy.com/images/logo.png",
 "closed":function(cb){
 
-var loc= "http://localhost:3027";
+var loc= "http://localhost:3028";
 
 var xhr = new XMLHttpRequest();
 xhr.open("PUT", loc+"/shop/aid/pid", true);
@@ -22,7 +11,9 @@ xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.send(JSON.stringify(cb));
 }
 };
-
+console.log(config.api_key)
+var paidyHandler=Paidy.configure(config);
+function paidyPay(){
 var payload={
 "amount":<%= tsum %>,
 "currency":"JPY",
@@ -49,8 +40,8 @@ var payload={
 "quantity":"<%= ite[i].quantity %>",
 "title":"<%= ite[i].title %>",
 "unit_price":"<%= ite[i].unit_price %>"
-},
-<% } %>
+       },
+    <% } %>
 ],
 "order_ref":"88e021674",
 "shipping":0,
@@ -65,14 +56,6 @@ var payload={
 },
 "description":"axell store"
 };
-
-var paidyHandler=Paidy.configure(config);
-function paidyPay(){
 paidyHandler.launch(payload);
 };
-
-
-</script>
-
-</script>
 

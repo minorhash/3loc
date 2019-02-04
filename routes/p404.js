@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var fs=require("fs")
 var ls=require("ls")
-var db=require("usrdb")
 // glob
 var par
 

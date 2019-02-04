@@ -18,8 +18,7 @@ var cred = require("./js/cred");
 var getEma = function(req, res, next) {
 email = cred.ema(req);
 mailusr = adb.mailUsr(email);
-next();
-};
+next();};
 
 var getUsr = function(req, res, next) {
 if (mailusr) {
@@ -28,15 +27,13 @@ usr = mailusr.name;
 usr = null;
 console.log("no usr");
 }
-next();
-};
+next();};
 
 var chk = function(req, res, next) {
   console.log("=== chk===");
   console.log(email);
   console.log(usr);
-  next();
-}; // chkEma
+  next();}; // chkEma
 
 var gcb = function(req, res) {
 res.render("shop", {
@@ -78,12 +75,12 @@ usr = mailusr.name;
 }
 next()}
 
-var rcb = function(req, res) {
+var cb = function(req, res) {
 var rob = { usr: usr, mer: allpre};
 res.render("shop", rob);
 };
 
-var arr=[getCok, posUsr, chk, rcb];
+var arr=[getCok, posUsr, chk, cb];
 
 router.post("/shop",arr);
 

@@ -124,7 +124,6 @@ ite=require('./routes/mer/'+ite)
 app.use('/', ite)
 })
 
-
 // === login ===
 ausr=["sig","sigp","out","adr","adrp","forg"]
 ausr.forEach(function(ite){
@@ -133,32 +132,27 @@ app.use('/', ite)
 })
 //error handler
 app.use(function(err, req, res, next) {
-// set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-// render the error page
 res.status(err.status || 500);
 if(err.status === 403){
-       return res.send('Action forbidden!');
-   }
+return res.send('Action forbidden!');
+}
 
-   if(err.status === 404){
-       return res.get('Page not found!');
-   }
-
+if(err.status === 404){
+return res.get('Page not found!');
+}
    // when status is 500, error handler
-   if(err.status === 500) {
-       return res.send('Server error occured!');
-   }
+if(err.status === 500) {
+return res.send('Server error occured!');
+}
 
-  res.render('error');
+res.render('error');
+
 });
 
-var p404 = require('./routes/p404');
+var p404=require('./routes/p404');
 app.use('/', p404);
-
-
-//var ses,usr,title,sku,nam,pri,uni,sum,myerr;
 
 module.exports = app;
